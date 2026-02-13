@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawGlitch — Autonomous Intelligence Built for Real Work</title>
+  <meta name="description"
+    content="LawGlitch transforms your browser into a real-time research engine — continuously searching, verifying, and synthesizing live web data into actionable reports." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lawglitch.in/" />
+  <meta property="og:title" content="LawGlitch — Autonomous Intelligence Built for Real Work" />
+  <meta property="og:description"
+    content="Continuous web crawling, verification, and synthesis. Not a chatbot — an AI worker." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lawglitch.in/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LawGlitch Assistant Pro",
+    "applicationCategory": "BrowserExtension",
+    "operatingSystem": "Chrome, Edge",
+    "description": "AI-powered browser extension for autonomous research, voice interaction, and task automation.",
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Beta" },
+      { "@type": "Offer", "price": "49", "priceCurrency": "USD", "name": "Professional" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bold">Law</span><span class="logo-light">Glitch</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="product.html" class="nav-link">Mira</a>
+        <a href="manifesto.html" class="nav-link">Manifesto</a>
+        <a href="#how-it-works" class="nav-link">How it Works</a>
+        <a href="#security" class="nav-link">Security</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <a href="#install" class="btn btn-outline btn-sm" onclick="openModal('browser-modal'); return false;">Install
+          Extension</a>
+        <a href="#book-demo" class="btn btn-default btn-sm">Book Demo</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars" id="mobile-menu-icon"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="product.html">Mira</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="#how-it-works">How it Works</a>
+      <a href="#security">Security</a>
+      <a href="#pricing">Pricing</a>
+      <div style="padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" style="width: 100%;">
+          <i class="fas fa-moon" id="theme-icon-mobile"></i>
+          <span style="margin-left: 0.5rem;">Toggle Theme</span>
+        </button>
+        <a href="#install" class="btn btn-outline btn-full" onclick="openModal('browser-modal'); return false;">Install
+          Extension</a>
+        <a href="#book-demo" class="btn btn-default btn-full">Book Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container-max">
+        <div class="hero-center">
+          <p class="hero-tag">Autonomous Research Infrastructure</p>
+          <h1>Autonomous Intelligence.<br>Built for Real Work.</h1>
+          <p class="hero-desc">LawGlitch transforms your browser into a real-time research engine — continuously
+            searching, verifying, and synthesizing live web data into actionable reports.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-hero btn-lg" onclick="openModal('demo-modal')">
+              <i class="fas fa-play"></i> Watch Demo
+            </button>
+            <button class="btn btn-hero-outline btn-lg" onclick="openModal('browser-modal')">
+              <i class="fas fa-download"></i> Install Extension
+            </button>
+            <button class="btn btn-hero-ghost btn-lg" onclick="openModal('book-trial-modal')">
+              Book Free Trial <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="hero-video">
+          <div class="hero-video-wrapper">
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/81AMG6pFzLM?autoplay=1&mute=1&loop=1&playlist=81AMG6pFzLM&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                title="LawGlitch demo video" allow="autoplay; encrypted-media" allowfullscreen loading="eager"></iframe>
+            </div>
+          </div>
+          <p class="hero-caption">Live autonomous research — no prompts, no hallucinations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Principles -->
+    <section class="section-padding" id="principles">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">Design Principles</h2>
+        </div>
+        <div class="grid grid-3 max-w-4xl mx-auto">
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-bolt"></i></div>
+            <h3 class="font-semibold mb-2">Execution over conversation</h3>
+            <p class="text-sm text-muted leading-relaxed">AI should do the work, not just talk about it.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-broadcast-tower"></i></div>
+            <h3 class="font-semibold mb-2">Real-time over static data</h3>
+            <p class="text-sm text-muted leading-relaxed">Live web intelligence, not frozen training snapshots.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <h3 class="font-semibold mb-2">Efficiency over brute force</h3>
+            <p class="text-sm text-muted leading-relaxed">Tiny tuned models. Lower cost. Faster results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section-padding bg-secondary" id="problem">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">Why Most AI Systems Fail at Real Work</h2>
+        </div>
+        <div class="grid grid-4 max-w-5xl mx-auto">
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-clock"></i></div>
+            <h3 class="font-semibold mb-2">Static Training Data</h3>
+            <p class="text-sm text-muted leading-relaxed">Models rely on frozen snapshots that decay daily.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 class="font-semibold mb-2">Hallucinations</h3>
+            <p class="text-sm text-muted leading-relaxed">Confident but unverifiable answers erode trust.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-bolt"></i></div>
+            <h3 class="font-semibold mb-2">Massive Compute Waste</h3>
+            <p class="text-sm text-muted leading-relaxed">Oversized models burn budget and energy for simple tasks.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-times-circle"></i></div>
+            <h3 class="font-semibold mb-2">Zero Execution</h3>
+            <p class="text-sm text-muted leading-relaxed">Most AI talks. It doesn't act, verify, or follow through.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-padding" id="how-it-works">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">How LawGlitch Works</h2>
+        </div>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-globe"></i></div>
+            <span class="workflow-label">Browser</span>
+          </div>
+          <i class="fas fa-arrow-right workflow-arrow"></i>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-robot"></i></div>
+            <span class="workflow-label">Autonomous Agent</span>
+          </div>
+          <i class="fas fa-arrow-right workflow-arrow"></i>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-search"></i></div>
+            <span class="workflow-label">Live Web</span>
+          </div>
+          <i class="fas fa-arrow-right workflow-arrow"></i>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-shield-alt"></i></div>
+            <span class="workflow-label">Verification</span>
+          </div>
+          <i class="fas fa-arrow-right workflow-arrow"></i>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-project-diagram"></i></div>
+            <span class="workflow-label">Workflow Engine</span>
+          </div>
+          <i class="fas fa-arrow-right workflow-arrow"></i>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i class="fas fa-file-alt"></i></div>
+            <span class="workflow-label">Structured Output</span>
+          </div>
+        </div>
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-sm text-muted leading-relaxed">LawGlitch uses autonomous browsing, workflow orchestration, and
+            cost-efficient tuned models to deliver real-time intelligence — not static text generation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section-padding bg-secondary" id="features">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">Product Capabilities</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-search"></i></div>
+            <h3 class="font-semibold mb-2">Autonomous Research</h3>
+            <p class="text-sm text-muted leading-relaxed">Continuous web crawling, summarization, and live source
+              tracking.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-project-diagram"></i></div>
+            <h3 class="font-semibold mb-2">Multi-step Workflows</h3>
+            <p class="text-sm text-muted leading-relaxed">Compose research pipelines that chain tasks end-to-end.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-file-alt"></i></div>
+            <h3 class="font-semibold mb-2">Report Synthesis</h3>
+            <p class="text-sm text-muted leading-relaxed">Export structured reports with full citations and source
+              links.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+            <h3 class="font-semibold mb-2">Email & Scheduling</h3>
+            <p class="text-sm text-muted leading-relaxed">Draft emails, schedule follow-ups, and create calendar events.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-database"></i></div>
+            <h3 class="font-semibold mb-2">Massive RAG Memory</h3>
+            <p class="text-sm text-muted leading-relaxed">Connect company docs and knowledge bases for deep context.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-server"></i></div>
+            <h3 class="font-semibold mb-2">Private Deployments</h3>
+            <p class="text-sm text-muted leading-relaxed">Enterprise single-tenant infrastructure with full data
+              isolation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section class="section-padding" id="demo">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">Demo Experience</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="hero-video-wrapper">
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/81AMG6pFzLM?autoplay=1&mute=0&rel=0&modestbranding=1&playsinline=1"
+                title="LawGlitch demo video" allow="autoplay; encrypted-media" allowfullscreen loading="eager"></iframe>
+            </div>
+          </div>
+          <div class="demo-highlights">
+            <div class="demo-highlight-item">
+              <div class="icon-box shrink-0"><i class="fas fa-layer-group"></i></div>
+              <span class="text-sm font-medium">Multi-tab exploration</span>
+            </div>
+            <div class="demo-highlight-item">
+              <div class="icon-box shrink-0"><i class="fas fa-search"></i></div>
+              <span class="text-sm font-medium">Live citations</span>
+            </div>
+            <div class="demo-highlight-item">
+              <div class="icon-box shrink-0"><i class="fas fa-shield-alt"></i></div>
+              <span class="text-sm font-medium">Source verification</span>
+            </div>
+            <div class="demo-highlight-item">
+              <div class="icon-box shrink-0"><i class="fas fa-file-alt"></i></div>
+              <span class="text-sm font-medium">Report generation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section-padding bg-secondary" id="comparison">
+      <div class="container-max max-w-3xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Why LawGlitch</h2>
+        </div>
+        <div class="card" style="padding:0; overflow-x:auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="highlight" style="text-align:center">LawGlitch</th>
+                <th style="text-align:center">Perplexity</th>
+                <th style="text-align:center">Generic LLMs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Live Web Execution</td>
+                <td style="text-align:center" class="check-icon"><i class="fas fa-check"></i></td>
+                <td style="text-align:center" class="partial-icon"><i class="fas fa-minus"></i></td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+              </tr>
+              <tr>
+                <td>Autonomous Workflows</td>
+                <td style="text-align:center" class="check-icon"><i class="fas fa-check"></i></td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+              </tr>
+              <tr>
+                <td>Tiny Tuned Models</td>
+                <td style="text-align:center" class="check-icon"><i class="fas fa-check"></i></td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+              </tr>
+              <tr>
+                <td>Cost Efficiency</td>
+                <td style="text-align:center">High</td>
+                <td style="text-align:center" class="text-muted">Medium</td>
+                <td style="text-align:center" class="text-muted">Low</td>
+              </tr>
+              <tr>
+                <td>Enterprise Private RAG</td>
+                <td style="text-align:center" class="check-icon"><i class="fas fa-check"></i></td>
+                <td style="text-align:center" class="text-muted">Limited</td>
+                <td style="text-align:center" class="x-icon"><i class="fas fa-times"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section class="audience-section">
+      <div class="container-max text-center">
+        <p class="text-muted text-sm mb-6">For anyone who researches, verifies, or executes on information.</p>
+        <div class="audience-pills">
+          <span class="pill">Founders</span>
+          <span class="pill">Researchers</span>
+          <span class="pill">Analysts</span>
+          <span class="pill">Lawyers</span>
+          <span class="pill">Consultants</span>
+          <span class="pill">Journalists</span>
+          <span class="pill">Enterprises</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section-padding" id="pricing">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Pricing Philosophy</h2>
+          <p class="text-muted max-w-lg mx-auto">Tiny tuned models → lower compute → fair pricing. Enterprise-grade
+            intelligence at startup-friendly rates.</p>
+        </div>
+        <div class="grid grid-3 max-w-4xl mx-auto">
+          <div class="card pricing-card">
+            <div class="pricing-header">
+              <h3 class="text-lg font-semibold">Free Trial</h3>
+              <span class="pricing-badge-free">7 Days</span>
+            </div>
+            <div class="pricing-price"><span class="text-3xl font-bold">$0</span></div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Smart browser extension</li>
+              <li><i class="fas fa-check"></i> 10 research reports/day</li>
+              <li style="color:var(--muted-foreground)"><i class="fas fa-times"
+                  style="color:var(--muted-foreground);opacity:0.5"></i> Scheduled tasks</li>
+              <li style="color:var(--muted-foreground)"><i class="fas fa-times"
+                  style="color:var(--muted-foreground);opacity:0.5"></i> Company database</li>
+              <li style="color:var(--muted-foreground)"><i class="fas fa-times"
+                  style="color:var(--muted-foreground);opacity:0.5"></i> Integrations</li>
+              <li style="color:var(--muted-foreground)"><i class="fas fa-times"
+                  style="color:var(--muted-foreground);opacity:0.5"></i> 24x7 support</li>
+            </ul>
+            <button class="btn btn-hero-outline btn-full" onclick="openModal('book-trial-modal')">Start Trial</button>
+          </div>
+          <div class="card pricing-card popular">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3 class="text-lg font-semibold">Researcher</h3>
+            </div>
+            <div class="pricing-price">
+              <span class="text-3xl font-bold">$60</span><span class="text-sm text-muted">/mo</span>
+              <div class="text-xs text-muted font-normal mt-1">Paid quarterly (or $75/mo)</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Smart browser extension</li>
+              <li><i class="fas fa-check"></i> 100 research reports/day</li>
+              <li><i class="fas fa-check"></i> Scheduled tasks</li>
+              <li style="color:var(--muted-foreground)"><i class="fas fa-times"
+                  style="color:var(--muted-foreground);opacity:0.5"></i> Company database</li>
+              <li><i class="fas fa-check"></i> Integrations (Slack etc.)</li>
+              <li><i class="fas fa-check"></i> 24x7 support</li>
+            </ul>
+            <button class="btn btn-hero btn-full" onclick="openModal('book-trial-modal')">Get Started</button>
+          </div>
+          <div class="card pricing-card">
+            <div class="pricing-header">
+              <h3 class="text-lg font-semibold">Enterprise</h3>
+            </div>
+            <div class="pricing-price"><span class="text-3xl font-bold">Custom</span></div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> Smart browser extension</li>
+              <li><i class="fas fa-check"></i> Unlimited research reports</li>
+              <li><i class="fas fa-check"></i> Scheduled tasks</li>
+              <li><i class="fas fa-check"></i> Dedicated Company database</li>
+              <li><i class="fas fa-check"></i> Full Integrations</li>
+              <li><i class="fas fa-check"></i> 24x7 priority support</li>
+            </ul>
+            <button class="btn btn-hero-outline btn-full" onclick="openModal('book-trial-modal')">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="section-padding bg-secondary" id="security">
+      <div class="container-max">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold">Built for Enterprise Trust</h2>
+        </div>
+        <div class="grid grid-3 max-w-3xl mx-auto">
+          <div class="security-item">
+            <i class="fas fa-shield-alt text-primary"></i>
+            <span class="text-sm font-medium">Authentication & access control</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-database text-primary"></i>
+            <span class="text-sm font-medium">Private RAG deployments</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-lock text-primary"></i>
+            <span class="text-sm font-medium">End-to-end encryption</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-file-check text-primary"></i>
+            <span class="text-sm font-medium">Audit logging</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-eye text-primary"></i>
+            <span class="text-sm font-medium">SOC-2 readiness</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-server text-primary"></i>
+            <span class="text-sm font-medium">Isolated infra options</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold">What Teams Say</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card testimonial-card">
+            <p class="testimonial-quote">"LawGlitch replaced three research tools in our firm. The autonomous research
+              alone saves us 10+ hours per week."</p>
+            <div class="testimonial-author">
+              <p class="font-semibold text-sm">Sarah Chen</p>
+              <p class="text-xs text-muted">Senior Analyst, Meridian Capital</p>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-quote">"The verification layer is incredible. We finally trust AI-generated research
+              because every claim has a source."</p>
+            <div class="testimonial-author">
+              <p class="font-semibold text-sm">James Park</p>
+              <p class="text-xs text-muted">Managing Partner, Park & Associates LLP</p>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-quote">"Cost-efficient and enterprise-ready. We deployed private RAG in two weeks with
+              zero infrastructure headaches."</p>
+            <div class="testimonial-author">
+              <p class="font-semibold text-sm">Maria Santos</p>
+              <p class="text-xs text-muted">Head of Innovation, NovaTech Solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding bg-secondary" id="faq">
+      <div class="container-max max-w-2xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Is my data private?</button>
+          <div class="faq-content">Yes. Private RAG is opt-in; we support on-prem/private infra for enterprise.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Which browsers are supported?</button>
+          <div class="faq-content">Chrome, Edge (Chromium), Firefox (beta).</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Can LawGlitch act on my behalf?</button>
+          <div class="faq-content">Yes, with your explicit authorisation and OAuth connections — send emails, create
+            events, and more.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Does LawGlitch access my browsing history?</button>
+          <div class="faq-content">Only with explicit permission for active sessions. RAG is opt-in.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">How does pricing work?</button>
+          <div class="faq-content">We offer a free Beta tier, Professional for individuals, and Enterprise with private
+            infra and SLA.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">Can I use LawGlitch offline?</button>
+          <div class="faq-content">Core research requires internet. Cached reports and local RAG context are available
+            offline.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">What integrations are available?</button>
+          <div class="faq-content">Google Workspace, Slack, Notion, CRMs, and custom webhooks via our API.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">How do I get started?</button>
+          <div class="faq-content">Install the browser extension, sign in, and run your first research task — takes
+            under 2 minutes.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-padding" id="book-demo">
+      <div class="container-max text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Deploy Your First AI Worker</h2>
+        <p class="text-muted mb-10 max-w-md mx-auto">Start with the free beta or book a guided demo with our team.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-hero btn-lg" onclick="openModal('browser-modal')">
+            <i class="fas fa-download"></i> Install Extension
+          </button>
+          <button class="btn btn-hero-outline btn-lg" onclick="openModal('book-trial-modal')">
+            Book Demo <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-max section-padding" style="padding-bottom:2rem">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-bold">Law</span><span class="logo-light">Glitch</span>
+          </a>
+          <p class="text-sm text-muted mt-4 leading-relaxed">Autonomous research infrastructure for the post-LLM era.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 LawGlitch. We build intelligent workers, not AI oracles.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit" class="btn btn-default btn-sm">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Demo Modal -->
+  <div class="modal-overlay" id="demo-modal">
+    <div class="modal modal-lg" style="padding:0;overflow:hidden;border-radius:1rem">
+      <button class="modal-close modal-close-light" style="z-index:10">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="aspect-video" style="background:var(--secondary);position:relative;">
+        <iframe src="" data-src="https://www.youtube.com/embed/81AMG6pFzLM?autoplay=1&rel=0" title="LawGlitch demo"
+          allow="autoplay; encrypted-media" allowfullscreen
+          style="width:100%;height:100%;border:none;position:absolute;top:0;left:0"></iframe>
+      </div>
+      <div style="padding:1.25rem;text-align:center;font-size:14px;color:var(--muted-foreground)">Demo shows automated
+        multi-tab research, RAG context expansion, and report generation.</div>
+    </div>
+  </div>
+
+  <!-- Browser Selection Modal -->
+  <div class="modal-overlay" id="browser-modal">
+    <div class="modal">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h3>Choose Your Browser</h3>
+      <p class="text-sm text-muted mt-2">Select your browser to install the LawGlitch extension.</p>
+      <div class="browser-grid">
+        <a href="https://microsoftedge.microsoft.com/addons/detail/lawglitch-assistant-pro/ghcjkpeimdeacochedajjlijbinmmege"
+          target="_blank" rel="noopener noreferrer" class="browser-option">
+          <i class="fab fa-edge"></i>
+          <span>Microsoft Edge</span>
+        </a>
+        <a href="#" onclick="alert('Chrome extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-chrome"></i>
+          <span>Google Chrome</span>
+        </a>
+        <a href="#" onclick="alert('Firefox extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-firefox-browser"></i>
+          <span>Firefox</span>
+        </a>
+        <a href="#" onclick="alert('Brave extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-brave"></i>
+          <span>Brave</span>
+        </a>
+      </div>
+      <p class="text-xs text-muted text-center mt-4">Currently available for Microsoft Edge. Chrome, Firefox, and Brave
+        support coming soon!</p>
+    </div>
+  </div>
+
+  <!-- Install Modal -->
+  <div class="modal-overlay" id="install-modal">
+    <div class="modal">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h3>Install LawGlitch</h3>
+      <div class="install-steps">
+        <div class="install-step">
+          <div class="icon-box shrink-0"><i class="fab fa-chrome"></i></div>
+          <div>
+            <p class="font-medium text-sm">Install from Chrome Web Store</p>
+            <p class="text-sm text-muted">Click the button below to add LawGlitch to your browser.</p>
+          </div>
+        </div>
+        <div class="install-step">
+          <div class="icon-box shrink-0"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <p class="font-medium text-sm">Add permissions</p>
+            <p class="text-sm text-muted">Grant access only to pages you explicitly instruct the agent to read.</p>
+          </div>
+        </div>
+        <div class="install-step">
+          <div class="icon-box shrink-0"><i class="fas fa-sign-in-alt"></i></div>
+          <div>
+            <p class="font-medium text-sm">Sign in</p>
+            <p class="text-sm text-muted">Click the extension icon and sign in to start researching.</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://chrome.google.com/webstore" target="_blank" rel="noopener noreferrer"
+        class="btn btn-hero btn-lg btn-full mt-4">Open Chrome Web Store</a>
+      <p class="text-xs text-muted text-center mt-2">We only access pages you explicitly instruct the agent to read.</p>
+    </div>
+  </div>
+
+  <!-- Book Trial Modal -->
+  <div class="modal-overlay" id="book-trial-modal">
+    <div class="modal">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h3>Book a Demo</h3>
+      <form id="book-trial-form">
+        <div class="form-group"><input class="form-input" name="name" placeholder="Full name" /></div>
+        <div class="form-group"><input class="form-input" name="email" type="email" placeholder="Work email" /></div>
+        <div class="form-group"><input class="form-input" name="company" placeholder="Company" /></div>
+        <div class="form-group"><input class="form-input" name="role" placeholder="Role (optional)" /></div>
+        <div class="form-group"><textarea class="form-input" name="useCase" placeholder="Use case (optional)"
+            rows="3"></textarea></div>
+        <div class="checkbox-group mb-3">
+          <input type="checkbox" name="gdpr" id="gdpr" />
+          <label for="gdpr">I consent to LawGlitch processing my data per the privacy policy.</label>
+        </div>
+        <button type="submit" class="btn btn-hero btn-lg btn-full">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Manifesto — The Future of AI That Gets Things Done | LawGlitch</title>
+  <meta name="description"
+    content="We didn't set out to build another AI company. We set out to fix what the industry got wrong. AI should execute, not converse." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lawglitch.in/manifesto" />
+  <meta property="og:title" content="Our Manifesto — The Future of AI That Gets Things Done" />
+  <meta property="og:description"
+    content="AI should execute, not converse. Real-time over static data. Efficiency over brute force." />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-bold">Law</span><span class="logo-light">Glitch</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="product.html" class="nav-link">Mira</a>
+        <a href="manifesto.html" class="nav-link" style="color:var(--foreground)">Manifesto</a>
+        <a href="index.html#how-it-works" class="nav-link">How it Works</a>
+        <a href="index.html#security" class="nav-link">Security</a>
+        <a href="index.html#pricing" class="nav-link">Pricing</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <a href="index.html#install" class="btn btn-outline btn-sm"
+          onclick="openModal('browser-modal'); return false;">Install Extension</a>
+        <a href="index.html#book-demo" class="btn btn-default btn-sm">Book Demo</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars" id="mobile-menu-icon"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="product.html">Mira</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="index.html#how-it-works">How it Works</a>
+      <a href="index.html#security">Security</a>
+      <a href="index.html#pricing">Pricing</a>
+      <div style="padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" style="width: 100%;">
+          <i class="fas fa-moon" id="theme-icon-mobile"></i>
+          <span style="margin-left: 0.5rem;">Toggle Theme</span>
+        </button>
+        <a href="index.html#install" class="btn btn-outline btn-full"
+          onclick="openModal('browser-modal'); return false;">Install Extension</a>
+        <a href="index.html#book-demo" class="btn btn-default btn-full">Book Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container-max text-center max-w-3xl mx-auto">
+        <p class="hero-tag">Our Manifesto</p>
+        <h1>The Future of AI<br>That Gets Things Done.</h1>
+        <p class="hero-desc" style="margin-bottom:0">We didn't set out to build another AI company. We set out to fix
+          what the industry got wrong.</p>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="border-y bg-card">
+      <div class="container-max section-padding">
+        <blockquote class="max-w-3xl mx-auto text-center" style="font-size:1.25rem;font-weight:500;line-height:1.6">
+          "The measure of intelligence is not the quality of answers — it's the quality of <span
+            class="text-primary">actions taken</span>."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section-padding">
+      <div class="container-max">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"><span class="step-num">01</span></div>
+            <h3 class="font-bold text-lg mb-3">The Problem</h3>
+            <p class="text-muted leading-relaxed">The AI industry promised transformation but delivered conversation.
+              Billions spent on models that generate text but can't execute a single real-world task without human
+              hand-holding.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"><span class="step-num">02</span></div>
+            <h3 class="font-bold text-lg mb-3">Our Response</h3>
+            <p class="text-muted leading-relaxed">We built LawGlitch — autonomous intelligence that lives in your
+              browser, understands your context, and acts on your behalf. Not another chatbot. A worker.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"><span class="step-num">03</span></div>
+            <h3 class="font-bold text-lg mb-3">The Mission</h3>
+            <p class="text-muted leading-relaxed">To build the future of AI that gets things done. Where every
+              professional has access to an intelligent copilot that researches, automates, captures, and synthesizes —
+              continuously, privately, and at scale.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><span class="step-num">04</span></div>
+            <h3 class="font-bold text-lg mb-3">The Vision</h3>
+            <p class="text-muted leading-relaxed">A world where AI doesn't replace human judgment — it amplifies it.
+              Where the barrier between intent and execution is zero. Where intelligence is infrastructure, not a
+              product you prompt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beliefs -->
+    <section class="section-padding bg-secondary">
+      <div class="container-max">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">What We Believe</h2>
+          <p class="text-muted max-w-xl mx-auto">These aren't marketing lines. They're engineering constraints.</p>
+        </div>
+        <div class="grid grid-3 max-w-5xl mx-auto">
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-bolt"></i></div>
+            <h3 class="font-semibold mb-2">AI should execute, not converse.</h3>
+            <p class="text-sm text-muted leading-relaxed">The industry built trillion-dollar oracles that answer
+              questions. We're building workers that complete tasks.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-broadcast-tower"></i></div>
+            <h3 class="font-semibold mb-2">Real-time intelligence over static knowledge.</h3>
+            <p class="text-sm text-muted leading-relaxed">Training data is history. The web is alive. Our systems crawl,
+              verify, and synthesize live data.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <h3 class="font-semibold mb-2">Efficiency is the product.</h3>
+            <p class="text-sm text-muted leading-relaxed">Tiny, tuned models. Lower cost. Faster results. We don't throw
+              compute at problems — we engineer precision.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-bullseye"></i></div>
+            <h3 class="font-semibold mb-2">User sovereignty is non-negotiable.</h3>
+            <p class="text-sm text-muted leading-relaxed">Every data capture is user-gated. Every AI instance is
+              isolated. Every session is private.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-eye"></i></div>
+            <h3 class="font-semibold mb-2">Transparency over black boxes.</h3>
+            <p class="text-sm text-muted leading-relaxed">You should see what your AI sees, know what it does, and
+              control when it acts. Full visibility.</p>
+          </div>
+          <div class="card">
+            <div class="icon-box"><i class="fas fa-building"></i></div>
+            <h3 class="font-semibold mb-2">Infrastructure, not features.</h3>
+            <p class="text-sm text-muted leading-relaxed">We don't build chatbots with extra buttons. We build
+              autonomous intelligence infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promise -->
+    <section class="section-padding">
+      <div class="container-max max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Promise</h2>
+        <p class="text-muted leading-relaxed mb-4">We will never ship AI that just talks. Every feature we build must
+          pass one test:</p>
+        <p style="font-size:1.25rem;font-weight:600;margin-bottom:2rem">"Does this help someone <span
+            class="text-primary">do</span> something they couldn't do before?"</p>
+        <p class="text-muted leading-relaxed mb-10">If the answer is no, it doesn't ship. We build autonomous
+          intelligence infrastructure for the post-LLM era — where AI is measured by output, not conversation.</p>
+        <div class="hero-buttons">
+          <a href="product.html" class="btn btn-hero btn-lg">
+            Explore Mira <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="index.html#book-demo" class="btn btn-hero-outline btn-lg">
+            Book Free Trial <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-max section-padding" style="padding-bottom:2rem">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-bold">Law</span><span class="logo-light">Glitch</span>
+          </a>
+          <p class="text-sm text-muted mt-4 leading-relaxed">Autonomous research infrastructure for the post-LLM era.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="product.html">Mira</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="manifesto.html">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 LawGlitch. We build intelligent workers, not AI oracles.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Browser Selection Modal -->
+  <div class="modal-overlay" id="browser-modal">
+    <div class="modal">
+      <button class="modal-close"><i class="fas fa-times"></i></button>
+      <h3>Choose Your Browser</h3>
+      <p class="text-sm text-muted mt-2">Select your browser to install the LawGlitch extension.</p>
+      <div class="browser-grid">
+        <a href="https://microsoftedge.microsoft.com/addons/detail/lawglitch-assistant-pro/ghcjkpeimdeacochedajjlijbinmmege"
+          target="_blank" rel="noopener noreferrer" class="browser-option">
+          <i class="fab fa-edge"></i>
+          <span>Microsoft Edge</span>
+        </a>
+        <a href="#" onclick="alert('Chrome extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-chrome"></i>
+          <span>Google Chrome</span>
+        </a>
+        <a href="#" onclick="alert('Firefox extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-firefox-browser"></i>
+          <span>Firefox</span>
+        </a>
+        <a href="#" onclick="alert('Brave extension coming soon!')" class="browser-option disabled">
+          <i class="fab fa-brave"></i>
+          <span>Brave</span>
+        </a>
+      </div>
+      <p class="text-xs text-muted text-center mt-4">Currently available for Microsoft Edge. Chrome, Firefox, and Brave
+        support coming soon!</p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
