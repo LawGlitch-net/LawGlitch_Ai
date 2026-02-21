@@ -49,10 +49,9 @@ function initTheme() {
 
   if (savedTheme) {
     document.documentElement.setAttribute("data-theme", savedTheme);
-  } else if (prefersDark) {
-    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
   }
-
   updateThemeIcon();
 
   // Listen for system theme changes
@@ -639,3 +638,4 @@ window.toggleMobileMenu = toggleMobileMenu;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.updateBookingStatus = updateBookingStatus;
+
