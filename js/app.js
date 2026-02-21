@@ -52,6 +52,7 @@ function initTheme() {
   } else {
     document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
   }
+
   updateThemeIcon();
 
   // Listen for system theme changes
@@ -356,6 +357,7 @@ function initAdmin() {
         adminWaitlist = result.waitlist || [];
         updateAdminStats();
         renderBookings("all");
+        renderWaitlist(); // ← NEW
       }
     } else {
       if (err) err.textContent = result.error || "Incorrect password";
@@ -470,6 +472,7 @@ async function fetchAdminData() {
     adminWaitlist = data.waitlist || [];
     updateAdminStats();
     renderBookings("all");
+    renderWaitlist(); // ← NEW
     showToast("Data refreshed successfully");
   } catch (err) {
     console.error("Fetch error:", err);
@@ -508,6 +511,27 @@ function renderBookings(filter) {
         ${b.status !== "confirmed" ? `<button class="btn btn-ghost btn-sm" onclick="updateBookingStatus('${b.id}','confirmed')">Confirm</button>` : ""}
         ${b.status !== "cancelled" ? `<button class="btn btn-ghost btn-sm btn-destructive-text" onclick="updateBookingStatus('${b.id}','cancelled')">Cancel</button>` : ""}
       </td>
+    </tr>
+  `
+    )
+    .join("");
+}
+
+// ← NEW: Render newsletter subscribers table
+function renderWaitlist() {
+  const tbody = document.getElementById("waitlist-tbody");
+  if (!tbody) return;
+  if (adminWaitlist.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;padding:2rem;color:var(--muted-foreground)">No subscribers yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = adminWaitlist
+    .map(
+      (w) => `
+    <tr>
+      <td style="font-weight:500">${esc(w.email)}</td>
+      <td class="text-muted">${esc(w.source)}</td>
+      <td class="text-muted text-xs">${new Date(w.created_at).toLocaleDateString()}</td>
     </tr>
   `
     )
@@ -638,4 +662,3 @@ window.toggleMobileMenu = toggleMobileMenu;
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.updateBookingStatus = updateBookingStatus;
-
