@@ -392,39 +392,38 @@ async function verifyAdminPassword(password) {
   console.log("Verifying admin password, calling:", edgeUrl);
 
   try {
-    const res = await fetch(edgeUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-        "Authorization": "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-      },
-      body: JSON.stringify({
-        password: password,
-        action: "get",
-      }),
-    });
+    if (!supabaseClient) initSupabase();
 
-    console.log("Response status:", res.status);
+    const { data, error } = await (supabaseClient?.functions || supabaseClient).invoke(
+      "admin-data",
+      {
+        body: {
+          password: password,
+          action: "get",
+        },
+        headers: {
+          "Content-Type": "application/json",
+          apikey: LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+        },
+      }
+    );
 
-    // Check if response is OK
-    if (!res.ok) {
-      const text = await res.text();
-      console.error("Error response:", text);
-      return { success: false, error: "Server error: " + res.status };
+    if (error) {
+      console.error("Invoke error:", error);
+      return { success: false, error: error.message || "Server error" };
     }
 
-    const data = await res.json();
     console.log("Response data:", data);
 
-    if (data.error) {
+    if (data?.error) {
       return { success: false, error: data.error };
     }
 
     return {
       success: true,
-      bookings: data.bookings || [],
-      waitlist: data.waitlist || []
+      bookings: data?.bookings || [],
+      waitlist: data?.waitlist || [],
     };
   } catch (err) {
     console.error("Auth error:", err);
@@ -442,34 +441,27 @@ async function fetchAdminData() {
   console.log("Fetching admin data from:", edgeUrl);
 
   try {
-    const res = await fetch(edgeUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-        "Authorization": "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-      },
-      body: JSON.stringify({
-        password: adminPassword,
-        action: "get",
-      }),
-    });
+    if (!supabaseClient) initSupabase();
 
-    console.log("Fetch response status:", res.status);
+    const { data, error } = await (supabaseClient?.functions || supabaseClient).invoke(
+      "admin-data",
+      {
+        body: {
+          password: adminPassword,
+          action: "get",
+        },
+        headers: {
+          "Content-Type": "application/json",
+          apikey: LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+        },
+      }
+    );
 
-    if (!res.ok) {
-      const text = await res.text();
-      console.error("Fetch error response:", text);
-      throw new Error("Server error: " + res.status);
-    }
+    if (error) throw new Error(error.message || "Server error");
 
-    const data = await res.json();
-    console.log("Fetch response data:", data);
-
-    if (data.error) throw new Error(data.error);
-
-    adminBookings = data.bookings || [];
-    adminWaitlist = data.waitlist || [];
+    adminBookings = data?.bookings || [];
+    adminWaitlist = data?.waitlist || [];
     updateAdminStats();
     renderBookings("all");
     renderWaitlist(); // ← NEW
@@ -548,25 +540,32 @@ async function updateBookingStatus(id, status) {
   console.log("Updating booking status:", { id, status });
 
   try {
-    const res = await fetch(edgeUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-        "Authorization": "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
-      },
-      body: JSON.stringify({
-        password: adminPassword,
-        action: "update_status",
-        bookingId: id,
-        status: status,
-      }),
-    });
+    if (!supabaseClient) initSupabase();
 
-    const data = await res.json();
+    const { data, error } = await (supabaseClient?.functions || supabaseClient).invoke(
+      "admin-data",
+      {
+        body: {
+          password: adminPassword,
+          action: "update_status",
+          bookingId: id,
+          status: status,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          apikey: LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+          Authorization: "Bearer " + LAWGLITCH_CONFIG.SUPABASE_ANON_KEY,
+        },
+      }
+    );
+
     console.log("Update response:", data);
 
-    if (data.error) {
+    if (error) {
+      throw new Error(error.message || (data && data.error) || "Server error");
+    }
+
+    if (data && data.error) {
       throw new Error(data.error);
     }
 
