@@ -160,7 +160,7 @@
             </p>
           </div>
 
-          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:var(--space-xl);">
+          <div class="benefits-grid">
             <!-- Card 1 -->
             <article class="tech-card">
               <div class="tech-card-icon">
@@ -223,10 +223,8 @@
           </div>
 
           <!-- 3 Steps Grid -->
-          <div
-            style="display:grid; grid-template-columns: repeat(3, 1fr); gap:var(--space-xl); margin-bottom:var(--space-3xl);">
-            <div
-              style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:var(--space-xl);">
+          <div class="steps-grid">
+            <div class="step-card">
               <div
                 style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
                 Step 1</div>
@@ -237,8 +235,7 @@
               </p>
             </div>
 
-            <div
-              style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:var(--space-xl);">
+            <div class="step-card">
               <div
                 style="font-size:0.8rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
                 Step 2</div>
@@ -248,8 +245,7 @@
               </p>
             </div>
 
-            <div
-              style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:var(--space-xl);">
+            <div class="step-card">
               <div
                 style="font-size:0.8rem; font-weight:700; color:#10b981; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
                 Step 3</div>
@@ -425,13 +421,12 @@
             </div>
 
             <!-- Demo Bottom Control Bar -->
-            <div
-              style="background:#090d16; padding:12px 20px; border-top:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.825rem; color:var(--text-muted);">
+            <div class="demo-bottom-bar">
               <div>
                 <strong style="color:#ffffff;">Illustrative Preview:</strong> This interactive mockup demonstrates
                 Alfie's safety gate and step planning in action.
               </div>
-              <div style="display:flex; gap:10px;">
+              <div class="demo-bottom-actions">
                 <button type="button" id="demo-mode-toggle" class="btn btn-secondary"
                   style="padding:4px 10px; font-size:0.775rem;">
                   Toggle Mode (Ask First / Full Auto)
@@ -520,11 +515,9 @@
             </p>
           </div>
 
-          <div
-            style="display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--space-xl); max-width:960px; margin:0 auto;">
+          <div class="pricing-grid">
             <!-- Plan 1: Personal -->
-            <div
-              style="background:var(--bg-surface); border:1px solid var(--border-medium); border-radius:var(--radius-lg); padding:var(--space-2xl); display:flex; flex-direction:column; justify-content:space-between; gap:var(--space-xl);">
+            <div class="pricing-card">
               <div>
                 <span class="status-pill status-pill-success" style="margin-bottom:12px;">Non-Commercial</span>
                 <h3 style="font-size:1.5rem; color:#ffffff; margin-bottom:8px;">Free Personal Edition</h3>
@@ -554,8 +547,7 @@
             </div>
 
             <!-- Plan 2: Commercial -->
-            <div
-              style="background:var(--bg-surface); border:1px solid var(--border-medium); border-radius:var(--radius-lg); padding:var(--space-2xl); display:flex; flex-direction:column; justify-content:space-between; gap:var(--space-xl); position:relative;">
+            <div class="pricing-card pricing-card-commercial">
               <div>
                 <span class="status-pill status-pill-warning" style="margin-bottom:12px;">Business &amp;
                   Enterprise</span>
