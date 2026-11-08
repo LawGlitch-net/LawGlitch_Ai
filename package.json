@@ -1,0 +1,10 @@
+{
+  "name": "lawglitch-alfie-website",
+  "version": "1.0.0",
+  "description": "LawGlitch official website and legal hub for Alfie web extension",
+  "private": true,
+  "scripts": {
+    "start": "npx -y serve -l 3000",
+    "dev": "npx -y serve -l 3000"
+  }
+}
