@@ -26,38 +26,68 @@
     handleScroll();
   }
 
-  // 3. Mobile Navigation Menu Toggle
+  // 3. Mobile Navigation Menu Toggle with Backdrop & Scroll Lock
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('.nav-links');
 
   if (menuToggle && navMenu) {
+    // Create backdrop element if it doesn't exist
+    let navBackdrop = document.querySelector('.mobile-nav-backdrop');
+    if (!navBackdrop) {
+      navBackdrop = document.createElement('div');
+      navBackdrop.className = 'mobile-nav-backdrop';
+      navBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(navBackdrop);
+    }
+
+    const closeMenu = function () {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navMenu.classList.remove('nav-open');
+      document.body.classList.remove('mobile-nav-open');
+      navBackdrop.classList.remove('is-active');
+    };
+
+    const openMenu = function () {
+      menuToggle.setAttribute('aria-expanded', 'true');
+      navMenu.classList.add('nav-open');
+      document.body.classList.add('mobile-nav-open');
+      navBackdrop.classList.add('is-active');
+      const firstLink = navMenu.querySelector('a, button');
+      if (firstLink) firstLink.focus();
+    };
+
     menuToggle.addEventListener('click', function () {
       const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('nav-open');
-
-      if (!isExpanded) {
-        const firstLink = navMenu.querySelector('a');
-        if (firstLink) firstLink.focus();
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
       }
     });
 
+    navBackdrop.addEventListener('click', closeMenu);
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && navMenu.classList.contains('nav-open')) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        navMenu.classList.remove('nav-open');
+        closeMenu();
         menuToggle.focus();
       }
     });
 
-    navMenu.querySelectorAll('a').forEach(function (link) {
+    navMenu.querySelectorAll('a, button').forEach(function (link) {
       link.addEventListener('click', function () {
         if (navMenu.classList.contains('nav-open')) {
-          menuToggle.setAttribute('aria-expanded', 'false');
-          navMenu.classList.remove('nav-open');
+          closeMenu();
         }
       });
     });
+
+    // Close mobile menu on resize past mobile breakpoint
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768 && navMenu.classList.contains('nav-open')) {
+        closeMenu();
+      }
+    }, { passive: true });
   }
 
   // 4. Smooth Anchor Scrolling with Header Offset & Reduced Motion Check
@@ -91,8 +121,19 @@
     });
   });
 
-  // 5. Legal Table of Contents (ScrollSpy)
+  // 5. Legal Table of Contents (ScrollSpy & Mobile Toggle)
   const tocContainer = document.querySelector('.legal-toc');
+  const tocWrapper = document.querySelector('.legal-toc-wrapper');
+  const tocToggleBtn = document.querySelector('.toc-mobile-toggle');
+
+  if (tocToggleBtn && tocWrapper) {
+    tocToggleBtn.addEventListener('click', function () {
+      const isExpanded = tocToggleBtn.getAttribute('aria-expanded') === 'true';
+      tocToggleBtn.setAttribute('aria-expanded', !isExpanded);
+      tocWrapper.classList.toggle('toc-expanded');
+    });
+  }
+
   if (tocContainer) {
     const tocLinks = tocContainer.querySelectorAll('a[href^="#"]');
     const legalSections = [];
@@ -103,6 +144,14 @@
       if (section) {
         legalSections.push({ link: link, section: section });
       }
+
+      // If mobile TOC is open, close it when a link is tapped
+      link.addEventListener('click', function () {
+        if (tocWrapper && tocWrapper.classList.contains('toc-expanded')) {
+          tocWrapper.classList.remove('toc-expanded');
+          if (tocToggleBtn) tocToggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
 
     if ('IntersectionObserver' in window && legalSections.length > 0) {
