@@ -1,7 +1,7 @@
 /**
  * LawGlitch — Central Product Registry
- * Single authoritative source of truth for all LawGlitch products, browser availability,
- * store listings, and agent roadmap states across all website surfaces.
+ * Authoritative source of truth for LawGlitch products, download releases,
+ * and agent roadmap states across all website surfaces.
  */
 
 (function (root) {
@@ -18,36 +18,18 @@
       badge: 'Available Now',
       icon: 'assets/images/alfie-logo/icon-128.png',
       detailUrl: 'products/',
+      defaultVersion: '1.0.0',
       install: {
-        edge: {
-          key: 'edge',
-          label: 'Microsoft Edge',
-          storeName: 'Microsoft Edge Add-ons',
+        chromium: {
+          key: 'chromium',
+          label: 'Chromium Browser',
+          storeName: 'Direct ZIP Archive (GitHub Releases)',
           badge: 'Available Now',
           status: 'available',
-          url: 'https://microsoftedge.microsoft.com/addons/detail/alifie/ghcjkpeimdeacochedajjlijbinmmege',
-          icon: 'assets/images/browser-edge.svg',
-          note: 'Supports Edge 121+ with native sidebar and local execution.'
-        },
-        firefox: {
-          key: 'firefox',
-          label: 'Mozilla Firefox',
-          storeName: 'Firefox Add-ons (AMO)',
-          badge: 'Available Now',
-          status: 'available',
-          url: 'https://addons.mozilla.org/en-US/firefox/addon/alfie/',
-          icon: 'assets/images/browser-firefox.svg',
-          note: 'Official release on Firefox Add-ons (AMO).'
-        },
-        chrome: {
-          key: 'chrome',
-          label: 'Google Chrome',
-          storeName: 'Chrome Web Store',
-          badge: 'Coming Soon',
-          status: 'coming-soon',
-          url: '',
-          icon: 'assets/images/browser-chrome.svg',
-          note: 'Store listing is currently in review. Coming soon to Chrome Web Store.'
+          filename: 'alfie-chromium.zip',
+          url: 'https://github.com/LawGlitch/Alfie/releases/latest/download/alfie-chromium.zip',
+          icon: 'assets/images/chromium.svg',
+          note: 'Compatible with Chrome, Edge, Brave, Opera, Vivaldi, Arc & all Chromium browsers.'
         }
       },
       features: [
@@ -66,7 +48,7 @@
     }
   ];
 
-  // Freeze registry to prevent runtime tampering
+  // Freeze registry
   root.LAWGLITCH_PRODUCTS = Object.freeze(PRODUCTS);
 
   // Helper methods
@@ -83,6 +65,21 @@
       const product = this.getById(productId);
       if (!product || !product.install) return [];
       return Object.values(product.install);
+    },
+    fetchLatestVersion: async function (basePath = '') {
+      try {
+        const res = await fetch(basePath + 'latest.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          return data;
+        }
+      } catch (e) {
+        console.warn('Unable to fetch latest.json, using fallback', e);
+      }
+      return {
+        version: '1.0.0',
+        url: 'https://github.com/LawGlitch/Alfie/releases/latest/download/alfie-chromium.zip'
+      };
     }
   };
 

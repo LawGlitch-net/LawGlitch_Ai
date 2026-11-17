@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="braveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7654" />
+      <stop offset="50%" stop-color="#FB542B" />
+      <stop offset="100%" stop-color="#D92800" />
+    </linearGradient>
+    <linearGradient id="braveDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DE3B12" />
+      <stop offset="100%" stop-color="#9E1A00" />
+    </linearGradient>
+    <linearGradient id="braveHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFA085" />
+      <stop offset="100%" stop-color="#FB542B" />
+    </linearGradient>
+  </defs>
+  <!-- Brave Lion Silhouette -->
+  <g fill="none" fill-rule="evenodd">
+    <!-- Outer Mane / Crown -->
+    <path d="M24 2 L33 6 L38 13 L43 14 L41 21 L45 27 L39 36 L34 38 L30 45 L24 46 L18 45 L14 38 L9 36 L3 27 L7 21 L5 14 L10 13 L15 6 Z" fill="url(#braveGrad)" />
+    <!-- Mane Shading Facets -->
+    <path d="M24 2 L33 6 L31 12 L24 9 L17 12 L15 6 Z" fill="url(#braveHighlight)" />
+    <path d="M5 14 L10 13 L14 18 L7 21 Z" fill="url(#braveDark)" />
+    <path d="M43 14 L38 13 L34 18 L41 21 Z" fill="url(#braveDark)" />
+    <!-- Cheeks & Jaw -->
+    <path d="M3 27 L7 21 L13 25 L10 32 L9 36 Z" fill="url(#braveDark)" opacity="0.9" />
+    <path d="M45 27 L41 21 L35 25 L38 32 L39 36 Z" fill="url(#braveDark)" opacity="0.9" />
+    <!-- Lower Chin -->
+    <path d="M18 45 L24 46 L30 45 L28 41 L24 42 L20 41 Z" fill="url(#braveDark)" />
+    <path d="M20 41 L24 42 L28 41 L26 36 L22 36 Z" fill="url(#braveGrad)" />
+    <!-- Face Center Shield -->
+    <path d="M17 12 L24 9 L31 12 L34 18 L35 25 L31 31 L24 35 L17 31 L13 25 L14 18 Z" fill="#FFFFFF" />
+    <!-- Lion Eyes & Nose Bridge -->
+    <path d="M19 16 L24 14 L29 16 L31 22 L27 24 L24 21 L21 24 L17 22 Z" fill="url(#braveDark)" />
+    <!-- Eyes -->
+    <polygon points="19,20 22,21 20,23" fill="#FFFFFF" />
+    <polygon points="29,20 26,21 28,23" fill="#FFFFFF" />
+    <!-- Nose & Muzzle -->
+    <path d="M22 26 L26 26 L25 29 L24 30 L23 29 Z" fill="#202227" />
+    <!-- Whisker/Mouth Plates -->
+    <path d="M18 28 L22 26 L23 29 L20 33 Z" fill="url(#braveGrad)" />
+    <path d="M30 28 L26 26 L25 29 L28 33 Z" fill="url(#braveGrad)" />
+    <path d="M20 33 L24 35 L28 33 L26 36 L22 36 Z" fill="url(#braveDark)" />
+  </g>
+</svg>
+

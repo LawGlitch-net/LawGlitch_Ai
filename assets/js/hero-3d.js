@@ -81,10 +81,10 @@
     keyLight.position.set(8, 10, 6);
     scene.add(keyLight);
 
-    // Indigo accent — strong, creates the brand glow
-    const indigoSpot = new THREE.PointLight(0x6366f1, 4, 25);
-    indigoSpot.position.set(3, 3, 5);
-    scene.add(indigoSpot);
+    // Ocean blue accent — strong, creates the brand glow
+    const oceanSpot = new THREE.PointLight(0x0284c7, 4, 25);
+    oceanSpot.position.set(3, 3, 5);
+    scene.add(oceanSpot);
 
     // Cyan rim — opposite side for depth
     const cyanRim = new THREE.PointLight(0x06b6d4, 3, 20);
@@ -154,8 +154,8 @@
     const colors = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
 
-    const indigoColor = new THREE.Color(0x6366f1);
-    const cyanColor = new THREE.Color(0x06b6d4);
+    const oceanColor = new THREE.Color(0x0284c7);
+    const cyanColor = new THREE.Color(0x0ea5e9);
     const whiteColor = new THREE.Color(0xe2e8f0);
 
     for (let i = 0; i < count; i++) {
@@ -172,7 +172,7 @@
       // Color distribution
       const colorChoice = Math.random();
       let color;
-      if (colorChoice < 0.35) color = indigoColor;
+      if (colorChoice < 0.35) color = oceanColor;
       else if (colorChoice < 0.55) color = cyanColor;
       else color = whiteColor;
 
@@ -208,7 +208,7 @@
   function createHolographicGrid() {
     const gridGeo = new THREE.PlaneGeometry(40, 40, 40, 40);
     const gridMat = new THREE.MeshBasicMaterial({
-      color: 0x6366f1,
+      color: 0x0284c7,
       wireframe: true,
       transparent: true,
       opacity: 0.06,
@@ -242,7 +242,7 @@
     // Glowing edge frame
     const edges = new THREE.EdgesGeometry(bodyGeo);
     const edgeMat = new THREE.LineBasicMaterial({
-      color: 0x6366f1,
+      color: 0x0284c7,
       transparent: true,
       opacity: 0.8
     });
@@ -289,7 +289,7 @@
     // Target highlight (cyan glow)
     const highlightGeo = new THREE.BoxGeometry(1.6, 0.4, 0.02);
     const highlightMat = new THREE.MeshBasicMaterial({
-      color: 0x06b6d4,
+      color: 0x0ea5e9,
       transparent: true,
       opacity: 0.3
     });
@@ -313,7 +313,7 @@
     // Panel glow border
     const panelEdges = new THREE.EdgesGeometry(panelGeo);
     const panelEdgeMat = new THREE.LineBasicMaterial({
-      color: 0x818cf8,
+      color: 0x38bdf8,
       transparent: true,
       opacity: 0.9
     });
@@ -324,7 +324,7 @@
     // Chat bubbles in panel
     const bubbleGeo = new THREE.BoxGeometry(1.2, 0.25, 0.01);
     const userBubbleMat = new THREE.MeshBasicMaterial({
-      color: 0x4f46e5,
+      color: 0x0284c7,
       transparent: true,
       opacity: 0.5
     });
@@ -355,7 +355,7 @@
     // Outer glow sphere
     const glowGeo = new THREE.SphereGeometry(3.5, 32, 32);
     const glowMat = new THREE.MeshBasicMaterial({
-      color: 0x6366f1,
+      color: 0x0284c7,
       transparent: true,
       opacity: 0.03,
       side: THREE.BackSide,
@@ -385,16 +385,16 @@
     ];
 
     var nodeMaterials = [
-      new THREE.MeshBasicMaterial({ color: 0x6366f1 }),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4 }),
-      new THREE.MeshBasicMaterial({ color: 0x818cf8 }),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4 }),
-      new THREE.MeshBasicMaterial({ color: 0x6366f1 }),
-      new THREE.MeshBasicMaterial({ color: 0x818cf8 }),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4 }),
-      new THREE.MeshBasicMaterial({ color: 0x6366f1 }),
-      new THREE.MeshBasicMaterial({ color: 0x818cf8 }),
-      new THREE.MeshBasicMaterial({ color: 0x06b6d4 })
+      new THREE.MeshBasicMaterial({ color: 0x0284c7 }),
+      new THREE.MeshBasicMaterial({ color: 0x0ea5e9 }),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8 }),
+      new THREE.MeshBasicMaterial({ color: 0x0ea5e9 }),
+      new THREE.MeshBasicMaterial({ color: 0x0284c7 }),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8 }),
+      new THREE.MeshBasicMaterial({ color: 0x0ea5e9 }),
+      new THREE.MeshBasicMaterial({ color: 0x0284c7 }),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8 }),
+      new THREE.MeshBasicMaterial({ color: 0x0ea5e9 })
     ];
 
     var nodeGeoOuter = new THREE.SphereGeometry(0.12, 16, 16);
@@ -429,7 +429,7 @@
     // Connect some nodes with thin lines
     var connections = [[0, 1], [1, 3], [2, 5], [0, 4], [4, 6], [6, 8], [7, 2], [3, 8], [5, 9], [9, 7]];
     var lineMat = new THREE.LineBasicMaterial({
-      color: 0x6366f1,
+      color: 0x0284c7,
       transparent: true,
       opacity: 0.12,
       blending: THREE.AdditiveBlending,
@@ -460,7 +460,7 @@
   function createOrbitalRing() {
     var ringGeo = new THREE.TorusGeometry(4.5, 0.015, 8, 120);
     var ringMat = new THREE.MeshBasicMaterial({
-      color: 0x06b6d4,
+      color: 0x0ea5e9,
       transparent: true,
       opacity: 0.35,
       blending: THREE.AdditiveBlending,
@@ -475,7 +475,7 @@
     // Second ring — smaller, offset
     var ring2Geo = new THREE.TorusGeometry(3.2, 0.01, 8, 100);
     var ring2Mat = new THREE.MeshBasicMaterial({
-      color: 0x818cf8,
+      color: 0x38bdf8,
       transparent: true,
       opacity: 0.2,
       blending: THREE.AdditiveBlending,
@@ -512,7 +512,7 @@
 
       var beamGeo = new THREE.BufferGeometry().setFromPoints([startPos, endPos]);
       var beamMat = new THREE.LineBasicMaterial({
-        color: i % 2 === 0 ? 0x06b6d4 : 0x6366f1,
+        color: i % 2 === 0 ? 0x0ea5e9 : 0x0284c7,
         transparent: true,
         opacity: 0.0,
         blending: THREE.AdditiveBlending,

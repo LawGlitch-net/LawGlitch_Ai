@@ -37,9 +37,6 @@
   <div class="site-bg-grid" aria-hidden="true"></div>
 
   <div class="page-wrapper">
-    <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Header -->
     <header class="site-header" role="banner">
       <div class="container nav-container">
@@ -67,7 +64,8 @@
           <a href="../">Home</a>
           <a href="../products/">Products</a>
           <a href="./" class="active" aria-current="page">Terms &amp; Privacy</a>
-          <a href="../dashboard/">Dashboard</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="../contact/">Contact</a>
           <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
         </nav>
       </div>
@@ -140,7 +138,7 @@
           <article class="legal-content">
             <!-- Plain-Language Summary Callout -->
             <div
-              style="background:rgba(99,102,241,0.1); border-left:3px solid var(--primary); padding:var(--space-lg); border-radius:0 var(--radius-md) var(--radius-md) 0; margin-bottom:var(--space-2xl);">
+              style="background:rgba(2,132,199,0.1); border-left:3px solid var(--primary); padding:var(--space-lg); border-radius:0 var(--radius-md) var(--radius-md) 0; margin-bottom:var(--space-2xl);">
               <h3 style="color:#ffffff; font-size:1.1rem; margin-bottom:8px;">At a Glance</h3>
               <p style="font-size:0.925rem; color:var(--text-secondary); margin:0;">
                 The base Alfie extension executes task planning locally in your browser. It does not stream your
@@ -176,14 +174,14 @@
                 <li><strong>LawGlitch Static Marketing Website:</strong> An informational website hosted on Cloudflare
                   Pages. It does not provide user logins, maintains no backend database, and does not record marketing
                   tracking cookies.</li>
-                <li><strong>Alfie Base Browser Extension:</strong> Available on Microsoft Edge, with builds in
-                  preparation for Google Chrome and Firefox. It operates locally inside the user's browser, parsing
+                <li><strong>Alfie Base Browser Extension:</strong> Built exclusively for Chromium-based browsers
+                  (including Google Chrome, Microsoft Edge, Brave, Opera, and Arc). It operates locally inside the user's browser, parsing
                   tasks and DOM controls on-device without cloud telemetry.</li>
                 <li><strong>Third-Party Websites Visited:</strong> Web pages visited by the user maintain their own
                   independent terms, tracking, and privacy policies. Alfie's local execution does not change or alter
                   those websites' independent practices.</li>
-                <li><strong>Browser Stores:</strong> Google Chrome Web Store, Microsoft Edge Add-ons, and Mozilla
-                  Add-ons collect their own store telemetry, download metrics, and crash data according to their
+                <li><strong>Browser Stores:</strong> The Google Chrome Web Store and Microsoft Edge Add-ons collect
+                  their own store telemetry, download metrics, and crash data according to their
                   respective policies.</li>
               </ul>
             </section>
@@ -514,17 +512,17 @@
               <li><a href="../">Home</a></li>
               <li><a href="../products/">Products</a></li>
               <li><a href="./">Terms &amp; Privacy</a></li>
-              <li><a href="../dashboard/">Dashboard</a></li>
+              <li><a href="../custom-integrations/">Custom Integrations</a></li>
+              <li><a href="../contact/">Contact</a></li>
             </ul>
           </div>
 
           <div class="footer-nav-col">
             <h5>Contact &amp; Licensing</h5>
             <ul>
-              <li><a
-                  href="mailto:lawglitch@outlook.com?subject=Commercial%20Licensing%20Inquiry%20%E2%80%94%20Alfie">Commercial
+              <li><a href="../contact/">Commercial
                   Licensing</a></li>
-              <li><a href="mailto:lawglitch@outlook.com?subject=Support%20Inquiry%20%E2%80%94%20Alfie">Support
+              <li><a href="../contact/">Support
                   Inquiries</a></li>
               <li><a href="#sec-terms">Terms of Use</a></li>
               <li><a href="#sec-cookies">No-Tracking Disclosure</a></li>
@@ -534,11 +532,10 @@
 
         <div class="footer-bottom">
           <div>
-            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong> &middot; Sole Proprietorship of
-            <strong>Sandipan Dutta</strong>. All rights reserved.
+            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong>. All rights reserved.
           </div>
           <div>
-            Hosted statically &middot; Zero Web Trackers &middot; Local Three.js (MIT)
+            Zero Web Trackers &middot; Local Three.js (MIT)
           </div>
         </div>
       </div>
@@ -547,6 +544,7 @@
 
   <!-- Shared product registry and install modal -->
   <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/instruction-anim.js"></script>
   <script src="../assets/js/install-modal.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

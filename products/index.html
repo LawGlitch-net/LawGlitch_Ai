@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products | LawGlitch</title>
   <meta name="description"
-    content="Explore products by LawGlitch. Featuring Alfie, our local-first browser automation assistant available for Microsoft Edge with Chrome and Firefox on the way.">
+    content="Explore products by LawGlitch. Featuring Alfie, our local-first browser automation assistant available for Chromium-based browsers including Google Chrome, Microsoft Edge, Brave, and Opera.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -36,9 +36,6 @@
   <div class="site-bg-grid" aria-hidden="true"></div>
 
   <div class="page-wrapper">
-    <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Header Navigation -->
     <header class="site-header" role="banner">
       <div class="container nav-container">
@@ -67,7 +64,8 @@
           <a href="../">Home</a>
           <a href="./" class="active" aria-current="page">Products</a>
           <a href="../terms/">Terms &amp; Privacy</a>
-          <a href="../dashboard/">Dashboard</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="../contact/">Contact</a>
           <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
         </nav>
       </div>
@@ -131,53 +129,32 @@
                 </ul>
               </div>
 
-              <!-- Browser Availability Matrix -->
-              <div class="product-browser-matrix-box">
-                <div class="matrix-title">Supported Browser Stores</div>
-                <div class="browser-cards-row">
-                  <!-- Microsoft Edge -->
-                  <div class="browser-pill-card is-active">
-                    <div class="browser-pill-top">
-                      <div style="display:flex; align-items:center; gap:8px;">
-                        <img src="../assets/images/browser-edge.svg" alt="Edge" width="24" height="24">
-                        <strong style="color:#ffffff; font-size:0.95rem;">Microsoft Edge</strong>
-                      </div>
-                      <span class="status-pill status-pill-success">Available</span>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">Official release on Microsoft Edge Add-ons (Manifest V3).</p>
-                    <a href="https://microsoftedge.microsoft.com/addons/detail/alifie/ghcjkpeimdeacochedajjlijbinmmege" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="margin-top:auto; justify-content:center;">
-                      Get for Edge &rarr;
-                    </a>
+              <!-- Verified Platform Compatibility -->
+              <div class="trust-signal-strip" style="margin: var(--space-lg) 0; max-width: 100%;" aria-label="Compatible Browsers">
+                <span class="trust-strip-title">Supported Chromium Environments</span>
+                <div class="trust-logos-row">
+                  <div class="trust-logo-item">
+                    <img src="../assets/images/browser-chrome.svg" alt="Google Chrome" width="20" height="20">
+                    <span>Google Chrome</span>
                   </div>
-
-                  <!-- Google Chrome -->
-                  <div class="browser-pill-card">
-                    <div class="browser-pill-top">
-                      <div style="display:flex; align-items:center; gap:8px;">
-                        <img src="../assets/images/browser-chrome.svg" alt="Chrome" width="24" height="24">
-                        <strong style="color:#ffffff; font-size:0.95rem;">Google Chrome</strong>
-                      </div>
-                      <span class="status-pill status-pill-neutral">Coming Soon</span>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">Store review underway. Official Chrome Web Store listing arriving soon.</p>
-                    <span class="btn btn-disabled btn-sm" style="margin-top:auto;">Store Review Underway</span>
+                  <div class="trust-logo-item">
+                    <img src="../assets/images/browser-edge.svg" alt="Microsoft Edge" width="20" height="20">
+                    <span>Microsoft Edge</span>
                   </div>
-
-                  <!-- Mozilla Firefox -->
-                  <div class="browser-pill-card is-active">
-                    <div class="browser-pill-top">
-                      <div style="display:flex; align-items:center; gap:8px;">
-                        <img src="../assets/images/browser-firefox.svg" alt="Firefox" width="24" height="24">
-                        <strong style="color:#ffffff; font-size:0.95rem;">Mozilla Firefox</strong>
-                      </div>
-                      <span class="status-pill status-pill-success">Available</span>
-                    </div>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">Official release on Firefox Add-ons (AMO).</p>
-                    <a href="https://addons.mozilla.org/en-US/firefox/addon/alfie/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="margin-top:auto; justify-content:center;">
-                      Get for Firefox &rarr;
-                    </a>
+                  <div class="trust-logo-item">
+                    <img src="../assets/images/chromium.svg" alt="Brave Browser" width="20" height="20">
+                    <span>Brave Browser</span>
+                  </div>
+                  <div class="trust-logo-item">
+                    <img src="../assets/images/chromium.svg" alt="Chromium Ecosystem" width="20" height="20">
+                    <span>Opera, Arc &amp; Chromium</span>
                   </div>
                 </div>
+              </div>
+
+              <!-- Chromium Package Download Section with Instruction Animation -->
+              <div class="product-browser-matrix-box" data-alfie-instruction-mount style="padding: 0; background: transparent; border: none;">
+                <!-- Instruction animation & Chromium download button mounted here -->
               </div>
 
               <!-- Product Actions Bar -->
@@ -186,7 +163,7 @@
                   <strong>Licensing:</strong> Free for non-commercial personal use &middot; 14-day commercial evaluation allowed.
                 </div>
                 <div class="product-actions-btns">
-                  <a href="mailto:lawglitch@outlook.com?subject=Commercial%20Licensing%20Inquiry%20%E2%80%94%20Alfie" class="btn btn-secondary btn-sm">
+                  <a href="../contact/" class="btn btn-secondary btn-sm">
                     Inquire for Commercial Licence
                   </a>
                   <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>
@@ -240,15 +217,16 @@
               <li><a href="../">Home</a></li>
               <li><a href="./">Products</a></li>
               <li><a href="../terms/">Terms &amp; Privacy</a></li>
-              <li><a href="../dashboard/">Dashboard</a></li>
+              <li><a href="../custom-integrations/">Custom Integrations</a></li>
+              <li><a href="../contact/">Contact</a></li>
             </ul>
           </div>
 
           <div class="footer-nav-col">
             <h5>Contact &amp; Licensing</h5>
             <ul>
-              <li><a href="mailto:lawglitch@outlook.com?subject=Commercial%20Licensing%20Inquiry%20%E2%80%94%20Alfie">Commercial Licensing</a></li>
-              <li><a href="mailto:lawglitch@outlook.com?subject=Support%20Inquiry%20%E2%80%94%20Alfie">Support Inquiries</a></li>
+              <li><a href="../contact/">Commercial Licensing</a></li>
+              <li><a href="../contact/">Support Inquiries</a></li>
               <li><a href="../terms/#sec-terms">Terms of Use</a></li>
               <li><a href="../terms/#sec-cookies">No-Tracking Disclosure</a></li>
             </ul>
@@ -257,11 +235,10 @@
 
         <div class="footer-bottom">
           <div>
-            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong> &middot; Sole Proprietorship of
-            <strong>Sandipan Dutta</strong>. All rights reserved.
+            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong>. All rights reserved.
           </div>
           <div>
-            Hosted statically &middot; Zero Web Trackers &middot; Local Three.js (MIT)
+            Zero Web Trackers &middot; Local Three.js (MIT)
           </div>
         </div>
       </div>
@@ -270,6 +247,7 @@
 
   <!-- Shared product registry and install modal -->
   <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/instruction-anim.js"></script>
   <script src="../assets/js/install-modal.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>

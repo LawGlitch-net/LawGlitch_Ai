@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | LawGlitch</title>
+  <meta name="description"
+    content="Get in touch with LawGlitch. Submit a commercial licensing inquiry, support request, or custom integration proposal.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Us | LawGlitch">
+  <meta property="og:description"
+    content="Get in touch with LawGlitch. Submit a commercial licensing inquiry, support request, or custom integration proposal.">
+  <meta property="og:image" content="../assets/images/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us | LawGlitch">
+  <meta name="twitter:description" content="Get in touch with LawGlitch — licensing, support, and integration inquiries.">
+  <meta name="twitter:image" content="../assets/images/og-image.png">
+
+  <!-- Theme & Favicon -->
+  <meta name="theme-color" content="#090d16">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    .contact-input,
+    .contact-textarea,
+    .contact-select {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #f1f5f9;
+      font-size: 0.95rem;
+      outline: none;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-input:focus,
+    .contact-textarea:focus,
+    .contact-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+    }
+
+    .contact-input::placeholder,
+    .contact-textarea::placeholder {
+      color: #64748b;
+    }
+
+    .contact-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-bg-glow" aria-hidden="true"></div>
+  <div class="site-bg-grid" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="site-header" role="banner">
+      <div class="container nav-container">
+        <a href="../" class="brand-link brand-lockup" aria-label="LawGlitch Home — Alfie">
+          <div class="brand-logo-frame">
+            <img src="../favicon.png" alt="LawGlitch Logo" class="brand-logo-img" width="34" height="34">
+          </div>
+          <div class="brand-title-group">
+            <span class="brand-title">LawGlitch</span>
+            <span class="brand-subtitle">Contact</span>
+          </div>
+        </a>
+
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <nav id="primary-nav" class="nav-links" role="navigation" aria-label="Primary navigation">
+          <a href="../">Home</a>
+          <a href="../products/">Products</a>
+          <a href="../terms/">Terms &amp; Privacy</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="./" class="active" aria-current="page">Contact</a>
+          <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <!-- Hero -->
+      <section style="padding: 5rem 0 2.5rem; text-align: center;">
+        <div class="container container-narrow">
+          <div class="hero-eyebrow-badge">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>Commercial Inquiries &amp; Enterprise Support</span>
+          </div>
+          <h1 style="font-size: clamp(2.2rem, 4vw, 3rem); color:#ffffff; margin-bottom:1rem; font-weight:800;">Contact LawGlitch</h1>
+          <p style="font-size:1.1rem; color:var(--text-secondary); max-width:620px; margin:0 auto; line-height:1.65;">
+            Whether you are evaluating Alfie for team deployment, need a commercial licence, or want to discuss a custom automation integration — our team is here to assist.
+          </p>
+        </div>
+      </section>
+
+      <!-- Form Section -->
+      <section style="padding: 0 0 6rem;">
+        <div class="container" style="max-width:740px;">
+          <div id="contact-form-card" class="contact-form-card">
+
+            <!-- Progress Step Indicator -->
+            <div class="form-step-indicator" aria-hidden="true">
+              <div class="form-step-item active">
+                <span class="form-step-num">1</span>
+                <span>Contact</span>
+              </div>
+              <div class="form-step-item active">
+                <span class="form-step-num">2</span>
+                <span>Company</span>
+              </div>
+              <div class="form-step-item active">
+                <span class="form-step-num">3</span>
+                <span>Requirements</span>
+              </div>
+            </div>
+
+            <form id="contact-form" novalidate>
+
+              <div class="form-group">
+                <label for="f-name">Full Name <span class="required-star">*</span></label>
+                <input type="text" id="f-name" name="name" required placeholder="e.g. Jane Doe" class="contact-input">
+                <div class="form-hint">Your legal or business name.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-email">Work Email Address <span class="required-star">*</span></label>
+                <input type="email" id="f-email" name="email" required placeholder="jane@company.com" class="contact-input">
+                <div class="form-hint">We will send our response and licensing terms here.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-phone">Phone Number <span style="color:var(--text-dim); font-weight:400; font-size:0.8rem;">(optional)</span></label>
+                <input type="tel" id="f-phone" name="phone" placeholder="+1 (555) 000-0000" class="contact-input">
+                <div class="form-hint">For urgent enterprise inquiries or scheduled technical calls.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-company">Company / Organisation <span class="required-star">*</span></label>
+                <input type="text" id="f-company" name="company" required placeholder="Your company or team name" class="contact-input">
+              </div>
+
+              <div class="form-group">
+                <label for="f-role">Your Role / Title <span class="required-star">*</span></label>
+                <input type="text" id="f-role" name="role" required placeholder="e.g. Head of Engineering, Operations Lead, Founder" class="contact-input">
+              </div>
+
+              <div class="form-group">
+                <label for="f-usecase">Use Case / Workflow Requirements <span class="required-star">*</span></label>
+                <textarea id="f-usecase" name="use_case" required rows="5" placeholder="Tell us about your team's workflow, planned seat count, custom integrations needed, or commercial licensing timeline..." class="contact-textarea"></textarea>
+                <div class="form-hint">Specific details help us prepare a tailored proposal.</div>
+              </div>
+
+              <!-- Privacy Pledge Box -->
+              <div class="privacy-notice-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <div>
+                  <strong>We respect your privacy:</strong> Zero marketing trackers, zero behavioral profiling, and no third-party data broker sharing. Your submission is used solely to respond to this inquiry.
+                </div>
+              </div>
+
+              <!-- Consent -->
+              <div style="display:flex; gap:0.75rem; align-items:flex-start; margin:1.25rem 0;">
+                <input type="checkbox" id="f-consent" name="consent" required style="width:18px; height:18px; min-width:18px; margin-top:3px; accent-color:var(--primary); cursor:pointer;">
+                <label for="f-consent" style="font-size:0.875rem; color:var(--text-secondary); line-height:1.5; cursor:pointer;">
+                  I consent to LawGlitch (operated by Sandipan Dutta) collecting and storing the personal data submitted in this form
+                  for the purpose of responding to my enquiry. My data will be handled in accordance with the
+                  <a href="../terms/" style="color:var(--accent);">Privacy Policy</a>.
+                  I understand I may withdraw this consent at any time by contacting
+                  <a href="mailto:lawglitch@outlook.com" style="color:var(--accent);">lawglitch@outlook.com</a>.
+                  I acknowledge that submitting this form does not create a contractual obligation on the part of LawGlitch.
+                  <span class="required-star">*</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; margin-top:0.5rem;" id="submit-btn">Send Message</button>
+
+              <div id="form-error" style="display:none; color:#ef4444; font-size:0.875rem; margin-top:0.75rem; padding:0.75rem 1rem; background:rgba(239,68,68,0.1); border-radius:8px; border:1px solid rgba(239,68,68,0.3);"></div>
+
+            </form>
+
+            <!-- Success State -->
+            <div id="contact-success" style="display:none; text-align:center; padding:3.5rem 1.5rem;">
+              <div style="width:64px; height:64px; border-radius:50%; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#10b981; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h2 style="color:#ffffff; font-size:1.85rem; margin-bottom:0.75rem;">Message Received!</h2>
+              <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 1.5rem; line-height:1.6;">
+                Thank you for reaching out. We have received your inquiry and will review your requirements. You will receive a direct reply from our team within 24 business hours.
+              </p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); flex-wrap:wrap;">
+                <a href="../" class="btn btn-primary">Back to Home</a>
+                <a href="../products/" class="btn btn-secondary">Explore Products</a>
+              </div>
+            </div>
+
+          </div>
+
+          <p style="text-align:center; margin-top:1.75rem; font-size:0.875rem; color:var(--text-dim);">
+            Direct inquiry or technical issues? Email us directly at
+            <a href="mailto:lawglitch@outlook.com" style="color:var(--accent);">lawglitch@outlook.com</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand-lockup">
+              <div class="brand-logo-frame">
+                <img src="../favicon.png" alt="LawGlitch" width="28" height="28">
+              </div>
+              <span class="brand-title">LawGlitch</span>
+            </div>
+            <p>
+              LawGlitch builds user-directed browser software and intelligent tools. Alfie is our first browser
+              companion, designed for clarity, safety, and local control.
+            </p>
+          </div>
+
+          <div class="footer-nav-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../products/">Products</a></li>
+              <li><a href="../terms/">Terms &amp; Privacy</a></li>
+              <li><a href="../custom-integrations/">Custom Integrations</a></li>
+              <li><a href="./">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h5>Contact &amp; Licensing</h5>
+            <ul>
+              <li><a href="./">Commercial Licensing</a></li>
+              <li><a href="./">Support Inquiries</a></li>
+              <li><a href="../terms/#sec-terms">Terms of Use</a></li>
+              <li><a href="../terms/#sec-cookies">No-Tracking Disclosure</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>
+            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong>. All rights reserved.
+          </div>
+          <div>
+            Zero Web Trackers &middot; Local Three.js (MIT)
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/instruction-anim.js"></script>
+  <script src="../assets/js/install-modal.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="./supabase-config.js"></script>
+  <script src="./contact.js"></script>
+</body>
+
+</html>

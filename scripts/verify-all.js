@@ -5,8 +5,9 @@ const pages = [
   '404.html',
   'index.html',
   'products/index.html',
-  'dashboard/index.html',
-  'terms/index.html'
+  'custom-integrations/index.html',
+  'terms/index.html',
+  'contact/index.html'
 ];
 
 let totalErrors = 0;
@@ -54,31 +55,51 @@ pages.forEach(p => {
   }
 });
 
-// Check Microsoft Edge and Firefox in products.js and products/index.html
-const productsJs = fs.readFileSync('assets/js/products.js', 'utf8');
-const productsHtml = fs.readFileSync('products/index.html', 'utf8');
-const edgeUrl = 'https://microsoftedge.microsoft.com/addons/detail/alifie/ghcjkpeimdeacochedajjlijbinmmege';
-const firefoxUrl = 'https://addons.mozilla.org/en-US/firefox/addon/alfie/';
-
-if (!productsJs.includes(edgeUrl)) {
-  console.error('ERROR: Microsoft Edge addon store link missing in assets/js/products.js!');
+// Check latest.json
+if (!fs.existsSync('latest.json')) {
+  console.error('ERROR: latest.json file missing!');
   totalErrors++;
 } else {
-  console.log('✓ Edge addon store link verified in products.js registry');
+  try {
+    const parsed = JSON.parse(fs.readFileSync('latest.json', 'utf8'));
+    const latestData = Array.isArray(parsed) ? parsed[0] : parsed;
+    if (!latestData || !latestData.version || !latestData.url) {
+      console.error('ERROR: latest.json missing required version or url property!');
+      totalErrors++;
+    } else {
+      console.log(`✓ latest.json verified (v${latestData.version})`);
+    }
+  } catch (err) {
+    console.error('ERROR: latest.json is invalid JSON!', err);
+    totalErrors++;
+  }
 }
 
-if (!productsJs.includes(firefoxUrl)) {
-  console.error('ERROR: Firefox addon store link missing in assets/js/products.js!');
+// Check custom-integrations/integrations.json
+if (!fs.existsSync('custom-integrations/integrations.json')) {
+  console.error('ERROR: custom-integrations/integrations.json missing!');
   totalErrors++;
 } else {
-  console.log('✓ Firefox addon store link verified in products.js registry');
+  try {
+    const integrations = JSON.parse(fs.readFileSync('custom-integrations/integrations.json', 'utf8'));
+    if (!Array.isArray(integrations) || integrations.length === 0) {
+      console.error('ERROR: integrations.json must be a non-empty array!');
+      totalErrors++;
+    } else {
+      console.log(`✓ integrations.json verified (${integrations.length} custom integrations found)`);
+    }
+  } catch (err) {
+    console.error('ERROR: integrations.json is invalid JSON!', err);
+    totalErrors++;
+  }
 }
 
-if (!productsHtml.includes(edgeUrl) || !productsHtml.includes(firefoxUrl)) {
-  console.error('ERROR: Direct store links missing in products/index.html!');
+// Check Chromium SVG exists
+if (!fs.existsSync('assets/images/chromium.svg')) {
+  console.error('ERROR: assets/images/chromium.svg is missing!');
   totalErrors++;
 } else {
-  console.log('✓ Direct store links verified in products/index.html browser matrix');
+  console.log('✓ Chromium SVG icon verified');
 }
 
 // Check CSS brace balance
@@ -98,7 +119,13 @@ if (openBraces !== closeBraces) {
 
 // Check JavaScript Syntax of all JS files
 const { execSync } = require('child_process');
-const jsFiles = ['assets/js/main.js', 'assets/js/products.js', 'assets/js/install-modal.js'];
+const jsFiles = [
+  'assets/js/main.js',
+  'assets/js/products.js',
+  'assets/js/instruction-anim.js',
+  'assets/js/install-modal.js',
+  'assets/js/integrations.js'
+];
 jsFiles.forEach(f => {
   try {
     execSync(`node -c "${f}"`);

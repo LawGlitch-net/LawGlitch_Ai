@@ -38,9 +38,6 @@
   <div class="site-bg-grid" aria-hidden="true"></div>
 
   <div class="page-wrapper">
-    <!-- Accessibility Skip Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Header Navigation -->
     <header class="site-header" role="banner">
       <div class="container nav-container">
@@ -68,7 +65,8 @@
           <a href="./" class="active" aria-current="page">Home</a>
           <a href="./products/">Products</a>
           <a href="./terms/">Terms &amp; Privacy</a>
-          <a href="./dashboard/">Dashboard</a>
+          <a href="./custom-integrations/">Custom Integrations</a>
+          <a href="./contact/">Contact</a>
           <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
         </nav>
       </div>
@@ -87,63 +85,166 @@
           <div class="hero-header-center">
             <div class="hero-eyebrow-badge">
               <span class="pulse-dot" aria-hidden="true"></span>
-              <span>A LawGlitch Product &middot; Local-First Intelligence</span>
+              <span>A LawGlitch Product &middot; Ultra-Efficient Local AI</span>
             </div>
 
             <h1 id="hero-title" class="hero-title">
               Let your browser do the busywork.<br>
-              <span class="gradient-text">Clear. Step-by-step. On-device.</span>
+              <span class="gradient-text">Fast. Cost-Efficient. On-Device.</span>
             </h1>
 
             <p class="hero-lead">
-              <strong>Alfie</strong> turns simple instructions into clear browser actions. Use your keyboard,
-              type what you need, or speak a command — and stay in complete control as you work.
+              <strong>Alfie</strong> uses an ultra-efficient, AI-powered semi-deterministic architecture for local task
+              execution.
+              It turns simple instructions into instant, step-by-step browser actions while cooperating with LLMs to
+              deliver massive token cost savings.
             </p>
 
             <div class="hero-ctas">
-              <button type="button" class="btn btn-primary js-open-install" data-open-install>
-                Get Alfie
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              <button type="button" class="btn btn-primary btn-lg js-open-install" data-open-install>
+                Get Alfie Free
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="8 17 12 21 16 17"></polyline>
                   <line x1="12" y1="12" x2="12" y2="21"></line>
                   <path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path>
                 </svg>
               </button>
-              <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+              <a href="./contact/" class="btn btn-secondary">Contact Sales / Enterprise</a>
+              <a href="#install-alfie" class="btn btn-secondary">Installation Walkthrough</a>
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: var(--space-md);">
-              Available now on <strong>Microsoft Edge</strong> and <strong>Mozilla Firefox</strong>. Google Chrome is
-              coming soon.
-            </p>
+            <!-- Verified Ecosystem & Trust Signal Strip -->
+            <div class="trust-signal-strip" aria-label="Supported Browsers and Security Badges">
+              <span class="trust-strip-title">Compatible With All Major Chromium Browsers</span>
+              <div class="trust-logos-row">
+                <div class="trust-logo-item">
+                  <img src="./assets/images/browser-chrome.svg" alt="Google Chrome" width="22" height="22">
+                  <span>Google Chrome</span>
+                </div>
+                <div class="trust-logo-item">
+                  <img src="./assets/images/browser-edge.svg" alt="Microsoft Edge" width="22" height="22">
+                  <span>Microsoft Edge</span>
+                </div>
+                <div class="trust-logo-item">
+                  <img src="./assets/images/browser-brave.svg" alt="Brave Browser" width="22" height="22">
+                  <span>Brave Browser</span>
+                </div>
+                <div class="trust-logo-item">
+                  <img src="./assets/images/chromium.svg" alt="Chromium Ecosystem" width="22" height="22">
+                  <span>Opera, Arc &amp; Chromium</span>
+                </div>
+              </div>
+              <div class="trust-badges-row">
+                <span class="trust-badge-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Ultra-Efficient Local AI
+                </span>
+                <span class="trust-badge-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  100% Private &middot; Zero Tracking
+                </span>
+                <span class="trust-badge-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Ask First Safety Confirmation
+                </span>
+                <span class="trust-badge-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Massive Token Cost Savings
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Quick Product Status Bar -->
-      <section class="section-block" style="padding: var(--space-lg) 0; border-bottom: 1px solid var(--border-subtle);">
+      <!-- Value Narrative: Problem -> Solution -> Benefits Section -->
+      <section id="value-narrative" class="section-block"
+        style="padding-top: var(--space-xl); padding-bottom: var(--space-2xl);">
         <div class="container">
-          <div class="browser-choice-card is-active"
-            style="max-width: 820px; margin: 0 auto; background: rgba(17, 24, 39, 0.65);">
-            <div class="browser-choice-icon-wrap">
-              <img src="./assets/images/alfie-logo/icon-48.png" alt="Alfie" width="38" height="38">
+          <div class="section-header-row text-center"
+            style="max-width:760px; margin:0 auto var(--space-xl); text-align:center;">
+            <span class="section-eyebrow">Smart Architecture</span>
+            <h2 class="section-title">Semi-Deterministic Local Speed Meets LLM Intelligence</h2>
+            <p class="section-desc" style="margin: 0 auto;">
+              Save hours of manual clicking and cut LLM token bills by letting Alfie handle the browser busywork
+              locally.
+            </p>
+          </div>
+
+          <div class="value-narrative-grid">
+            <!-- Problem Card -->
+            <div class="value-card">
+              <span class="value-card-badge problem">The Challenge</span>
+              <h3>Repetitive Busywork &amp; Runaway LLM Costs</h3>
+              <p>
+                Manually filling forms, navigating multi-step web dashboards, and copying data wastes hours every day.
+                Meanwhile, streaming entire web pages back and forth to cloud LLMs creates slow lag and exorbitant token
+                costs.
+              </p>
             </div>
-            <div class="browser-choice-info">
-              <div class="browser-choice-header">
-                <h3 class="browser-choice-name">Alfie Extension</h3>
-                <span class="status-pill status-pill-success">Edge: Available Now</span>
-                <span class="status-pill status-pill-success">Firefox: Available Now</span>
-                <span class="status-pill status-pill-neutral">Chrome: Coming Soon</span>
-              </div>
-              <p class="browser-choice-note">Free for personal non-commercial use &middot; Runs 100% on-device &middot;
-                Zero prompt streaming</p>
+
+            <!-- Solution Card -->
+            <div class="value-card">
+              <span class="value-card-badge solution">Our Solution</span>
+              <h3>Semi-Deterministic Local Architecture</h3>
+              <p>
+                Alfie executes browser actions on-device using an ultra-efficient semi-deterministic engine. It
+                navigates controls with mathematical reliability and cooperates with LLMs only when needed, drastically
+                slashing token usage.
+              </p>
             </div>
-            <div class="browser-choice-action">
-              <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>
-                Install Options
-              </button>
+
+            <!-- Benefit Card -->
+            <div class="value-card">
+              <span class="value-card-badge benefit">The Result</span>
+              <h3>Instant Speed &amp; Full User Control</h3>
+              <p>
+                Experience lightning-fast execution right on your computer. In standard <strong>Ask First</strong> mode,
+                Alfie always pauses for your confirmation before submitting forms or making sensitive clicks.
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dedicated Section: See Alfie in Action -->
+      <section id="see-alfie-in-action" class="section-block see-alfie-section">
+        <div class="container container-narrow text-center">
+          <h2 class="section-title action-title">See Alfie in action</h2>
+          <div class="action-video-frame">
+            <iframe src="https://www.youtube.com/embed/[]?autoplay=1&mute=1&loop=1&playlist=[]&playsinline=1&controls=1"
+              title="See Alfie in action" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chromium Installation & Walkthrough Section -->
+      <section id="install-alfie" class="section-block"
+        style="padding: var(--space-2xl) 0; border-bottom: 1px solid var(--border-subtle);">
+        <div class="container">
+          <div class="section-header-center" style="max-width:760px; margin:0 auto var(--space-xl); text-align:center;">
+            <span class="section-eyebrow">Get Started with Alfie</span>
+            <h2 class="section-title">Install Alfie for Chromium in Seconds</h2>
+            <p class="section-desc">
+              Alfie runs 100% locally on your computer with complete privacy. Watch the quick walkthrough below and
+              install the extension in seconds.
+            </p>
+          </div>
+
+          <div data-alfie-instruction-mount>
+            <!-- Rendered by instruction-anim.js -->
           </div>
         </div>
       </section>
@@ -160,55 +261,55 @@
             </p>
           </div>
 
-            <div class="benefits-grid">
-              <!-- Card 1 -->
-              <article class="tech-card">
-                <div class="tech-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M6 16h12"></path>
-                  </svg>
-                </div>
-                <h3>Keyboard-First Control</h3>
-                <p>
-                  Navigate and interact with page controls at the speed of thought. Press shortcuts to index interactive
-                  elements with visual numbered chips and execute without hunting for tiny buttons.
-                </p>
-              </article>
+          <div class="benefits-grid">
+            <!-- Card 1 -->
+            <article class="tech-card">
+              <div class="tech-card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M6 16h12"></path>
+                </svg>
+              </div>
+              <h3>Keyboard-First Control</h3>
+              <p>
+                Navigate and interact with page controls at the speed of thought. Press shortcuts to index interactive
+                elements with visual numbered chips and execute without hunting for tiny buttons.
+              </p>
+            </article>
 
-              <!-- Card 2 -->
-              <article class="tech-card">
-                <div class="tech-card-icon cyan">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </div>
-                <h3>Type or Speak Naturally</h3>
-                <p>
-                  Give plain-language instructions or use your voice. Alfie parses what you want to achieve on the
-                  current
-                  page and outlines a clear sequence of steps to get it done.
-                </p>
-              </article>
+            <!-- Card 2 -->
+            <article class="tech-card">
+              <div class="tech-card-icon cyan">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3>Type or Speak Naturally</h3>
+              <p>
+                Give plain-language instructions or use your voice. Alfie parses what you want to achieve on the
+                current
+                page and outlines a clear sequence of steps to get it done.
+              </p>
+            </article>
 
-              <!-- Card 3 -->
-              <article class="tech-card">
-                <div class="tech-card-icon emerald">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </div>
-                <h3>Stay in Full Control</h3>
-                <p>
-                  No surprise submissions or rogue clicks. In standard <strong>Ask First</strong> mode, Alfie pauses for
-                  your confirmation before any sensitive click, typing, or navigation.
-                </p>
-              </article>
-            </div>
+            <!-- Card 3 -->
+            <article class="tech-card">
+              <div class="tech-card-icon emerald">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h3>Stay in Full Control</h3>
+              <p>
+                No surprise submissions or rogue clicks. In standard <strong>Ask First</strong> mode, Alfie pauses for
+                your confirmation before any sensitive click, typing, or navigation.
+              </p>
+            </article>
           </div>
+        </div>
       </section>
 
       <!-- How It Works (3 Steps + Interactive Preview) -->
@@ -224,225 +325,223 @@
           </div>
 
           <!-- 3 Steps Grid -->
-              <div class="steps-grid">
-                <div class="step-card">
-                  <div
-                    style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
-                    Step 1</div>
-                  <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Tell Alfie what you want</h3>
-                  <p style="font-size:0.925rem; color:var(--text-muted);">
-                    Type a natural prompt or press <code>Alt+Shift+S</code> to speak your instruction directly into the
-                    floating assistant.
+          <div class="steps-grid">
+            <div class="step-card">
+              <div
+                style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
+                Step 1</div>
+              <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Tell Alfie what you want</h3>
+              <p style="font-size:0.925rem; color:var(--text-muted);">
+                Type a natural prompt or press <code>Alt+Shift+S</code> to speak your instruction directly into the
+                floating assistant.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div
+                style="font-size:0.8rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
+                Step 2</div>
+              <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Review the planned action</h3>
+              <p style="font-size:0.925rem; color:var(--text-muted);">
+                Alfie maps the page elements locally and presents the planned actions with highlighted target
+                elements.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div
+                style="font-size:0.8rem; font-weight:700; color:#10b981; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
+                Step 3</div>
+              <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Confirm and execute safely</h3>
+              <p style="font-size:0.925rem; color:var(--text-muted);">
+                Approve sensitive actions with one click or let routine steps proceed with visible progress
+                receipts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive Showcase: Illustrative Preview -->
+          <div class="showcase-viewport-container" aria-label="Illustrative Alfie Demonstration">
+            <!-- Browser Top Window Bar -->
+            <div class="browser-chrome-bar">
+              <div class="window-dots" aria-hidden="true">
+                <span class="window-dot close"></span>
+                <span class="window-dot min"></span>
+                <span class="window-dot max"></span>
+              </div>
+
+              <div class="browser-address-pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>https://docs.cloudservice.internal/pricing-plans</span>
+              </div>
+
+              <div class="browser-actions">
+                <button type="button" id="demo-toggle-map" class="btn btn-secondary"
+                  style="padding: 3px 8px; font-size: 0.725rem;" title="Toggle DOM Shortcut Chips">
+                  Alt+Shift+M (Map)
+                </button>
+                <div class="extension-action-icon" title="Alfie Active">
+                  <img src="./assets/images/alfie-logo/icon-32.png" alt="Alfie" width="18" height="18">
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage: Web Page on Left, Alfie Floating Assistant on Right -->
+            <div class="showcase-stage">
+              <!-- Left: Target Web Page with Live Mapped Elements -->
+              <div class="mock-webpage-surface">
+                <div class="mock-page-nav">
+                  <div class="mock-logo">
+                    <span class="map-chip">1: N</span>
+                    <span>CloudService Platform</span>
+                  </div>
+                  <div class="mock-links">
+                    <span><span class="map-chip">2: D</span>Docs</span>
+                    <span style="color:#ffffff;"><span class="map-chip">3: P</span>Pricing</span>
+                    <span><span class="map-chip">4: S</span>Support</span>
+                  </div>
+                </div>
+
+                <div class="mock-hero-text">
+                  <h3>Enterprise API Pricing &amp; Compliance</h3>
+                  <p>Choose the tier designed for local data residency and verifiable zero-retention workloads.
                   </p>
                 </div>
 
-                  <div class="step-card">
-                    <div
-                      style="font-size:0.8rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
-                      Step 2</div>
-                    <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Review the planned action</h3>
-                    <p style="font-size:0.925rem; color:var(--text-muted);">
-                      Alfie maps the page elements locally and presents the planned actions with highlighted target
-                      elements.
-                    </p>
+                <div class="mock-interactive-bar">
+                  <div class="mock-search-box highlighted-target">
+                    <span class="map-chip">5: Q</span>
+                    <span style="color:#f1f5f9; font-weight:500;">Search compliance policies...</span>
                   </div>
+                  <button type="button" class="mock-btn">
+                    <span class="map-chip">6: B</span>
+                    Search
+                  </button>
+                </div>
 
-                    <div class="step-card">
-                      <div
-                        style="font-size:0.8rem; font-weight:700; color:#10b981; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">
-                        Step 3</div>
-                      <h3 style="font-size:1.15rem; color:#ffffff; margin-bottom:8px;">Confirm and execute safely</h3>
-                      <p style="font-size:0.925rem; color:var(--text-muted);">
-                        Approve sensitive actions with one click or let routine steps proceed with visible progress
-                        receipts.
-                      </p>
-                    </div>
+                <!-- Mock Data Table Target -->
+                <div class="mock-data-table">
+                  <div class="mock-table-row" style="font-weight:600; color:#cbd5e1;">
+                    <span>Tier Plan</span>
+                    <span>Local Residency</span>
+                    <span>Rate / mo</span>
                   </div>
+                  <div class="mock-table-row">
+                    <span>Developer Tier</span>
+                    <span style="color:#10b981;">✓ Dedicated</span>
+                    <span>$49/mo</span>
+                  </div>
+                  <div class="mock-table-row">
+                    <span>Enterprise Private</span>
+                    <span style="color:#10b981;">✓ On-Premise Airgap</span>
+                    <span>Custom</span>
+                  </div>
+                </div>
+              </div>
 
-                  <!-- Interactive Showcase: Illustrative Preview -->
-                  <div class="showcase-viewport-container" aria-label="Illustrative Alfie Demonstration">
-                    <!-- Browser Top Window Bar -->
-                    <div class="browser-chrome-bar">
-                      <div class="window-dots" aria-hidden="true">
-                        <span class="window-dot close"></span>
-                        <span class="window-dot min"></span>
-                        <span class="window-dot max"></span>
-                      </div>
-
-                      <div class="browser-address-pill">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2">
-                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                        <span>https://docs.cloudservice.internal/pricing-plans</span>
-                      </div>
-
-                      <div class="browser-actions">
-                        <button type="button" id="demo-toggle-map" class="btn btn-secondary"
-                          style="padding: 3px 8px; font-size: 0.725rem;" title="Toggle DOM Shortcut Chips">
-                          Alt+Shift+M (Map)
-                        </button>
-                        <div class="extension-action-icon" title="Alfie Active">
-                          <img src="./assets/images/alfie-logo/icon-32.png" alt="Alfie" width="18" height="18">
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Stage: Web Page on Left, Alfie Floating Assistant on Right -->
-                    <div class="showcase-stage">
-                      <!-- Left: Target Web Page with Live Mapped Elements -->
-                      <div class="mock-webpage-surface">
-                        <div class="mock-page-nav">
-                          <div class="mock-logo">
-                            <span class="map-chip">1: N</span>
-                            <span>CloudService Platform</span>
-                          </div>
-                          <div class="mock-links">
-                            <span><span class="map-chip">2: D</span>Docs</span>
-                            <span style="color:#ffffff;"><span class="map-chip">3: P</span>Pricing</span>
-                            <span><span class="map-chip">4: S</span>Support</span>
-                          </div>
-                        </div>
-
-                        <div class="mock-hero-text">
-                          <h3>Enterprise API Pricing &amp; Compliance</h3>
-                          <p>Choose the tier designed for local data residency and verifiable zero-retention workloads.
-                          </p>
-                        </div>
-
-                        <div class="mock-interactive-bar">
-                          <div class="mock-search-box highlighted-target">
-                            <span class="map-chip">5: Q</span>
-                            <span style="color:#f1f5f9; font-weight:500;">Search compliance policies...</span>
-                          </div>
-                          <button type="button" class="mock-btn">
-                            <span class="map-chip">6: B</span>
-                            Search
-                          </button>
-                        </div>
-
-                        <!-- Mock Data Table Target -->
-                        <div class="mock-data-table">
-                          <div class="mock-table-row" style="font-weight:600; color:#cbd5e1;">
-                            <span>Tier Plan</span>
-                            <span>Local Residency</span>
-                            <span>Rate / mo</span>
-                          </div>
-                          <div class="mock-table-row">
-                            <span>Developer Tier</span>
-                            <span style="color:#10b981;">✓ Dedicated</span>
-                            <span>$49/mo</span>
-                          </div>
-                          <div class="mock-table-row">
-                            <span>Enterprise Private</span>
-                            <span style="color:#10b981;">✓ On-Premise Airgap</span>
-                            <span>Custom</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Right: Simulated Alfie Glassmorphic Floating Panel -->
-                      <aside class="alfie-assistant-panel-sim" aria-label="Simulated Alfie Floating Assistant">
-                        <!-- Panel Header -->
-                        <div class="panel-sim-header">
-                          <div class="panel-brand-box">
-                            <img src="./assets/images/alfie-logo/icon-32.png" alt="" class="panel-logo" width="24"
-                              height="24">
-                            <span class="panel-title">Alfie</span>
-                            <span class="panel-badge running">Running</span>
-                          </div>
-                          <div class="panel-sim-meta">
-                            <span id="demo-mode-tag" class="mode-tag" style="background:rgba(245,158,11,0.2); color:#fbbf24; font-size:11px; padding:2px 6px;
+              <!-- Right: Simulated Alfie Glassmorphic Floating Panel -->
+              <aside class="alfie-assistant-panel-sim" aria-label="Simulated Alfie Floating Assistant">
+                <!-- Panel Header -->
+                <div class="panel-sim-header">
+                  <div class="panel-brand-box">
+                    <img src="./assets/images/alfie-logo/icon-32.png" alt="" class="panel-logo" width="24" height="24">
+                    <span class="panel-title">Alfie</span>
+                    <span class="panel-badge running">Running</span>
+                  </div>
+                  <div class="panel-sim-meta">
+                    <span id="demo-mode-tag" class="mode-tag" style="background:rgba(245,158,11,0.2); color:#fbbf24; font-size:11px; padding:2px 6px;
                         border-radius:4px; font-weight:600;">Ask first</span>
-                            <span class="step-timer-badge">0.4s</span>
-                          </div>
-                        </div>
+                    <span class="step-timer-badge">0.4s</span>
+                  </div>
+                </div>
 
-                        <!-- Chat Feed & Step Execution Cards -->
-                        <div class="panel-sim-feed">
-                          <!-- User Message -->
-                          <div class="chat-bubble-user">
-                            Find Enterprise Local Residency rate and click Search button
-                          </div>
+                <!-- Chat Feed & Step Execution Cards -->
+                <div class="panel-sim-feed">
+                  <!-- User Message -->
+                  <div class="chat-bubble-user">
+                    Find Enterprise Local Residency rate and click Search button
+                  </div>
 
-                          <!-- Step 1 Card -->
-                          <div class="execution-step-card">
-                            <div class="step-header-row">
-                              <span class="step-tool-name">page_map()</span>
-                              <span class="step-state-tag done">18 controls &middot; 14ms</span>
-                            </div>
-                            <div class="step-desc">Indexed interactive controls across current viewport. Shortlisted top
-                              candidates.</div>
-                          </div>
-
-                          <!-- Step 2 Card -->
-                          <div class="execution-step-card">
-                            <div class="step-header-row">
-                              <span class="step-tool-name">type("privacy compliance", #search)</span>
-                              <span class="step-state-tag done">Verified &middot; 38ms</span>
-                            </div>
-                            <div class="step-desc">Target matched to Search input box [5: Q]. Text entered safely.</div>
-                          </div>
-
-                          <!-- Step 3 Card (Active Waiting for User in Ask First mode) -->
-                          <div class="execution-step-card active-step">
-                            <div class="step-header-row">
-                              <span class="step-tool-name">click("Search button [6: B]")</span>
-                              <span id="demo-step3-state" class="step-state-tag wait">Waiting approval</span>
-                            </div>
-                            <div class="step-desc">Form submission step. Safety gate requires user confirmation before
-                              execution.</div>
-
-                            <!-- Approval Action Gate -->
-                            <div id="demo-approval-box" class="approval-action-box">
-                              <span style="font-size:0.775rem; color:#f59e0b; font-weight:600;">Confirm sensitive
-                                action?</span>
-                              <button type="button" id="demo-approve-btn" class="approval-btn">Approve Step</button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Panel Composer & Quick Skills -->
-                        <div class="panel-sim-composer">
-                          <div class="skills-pill-row">
-                            <span class="skill-pill demo-skill-pill" data-cmd="/extract-table">/extract-table</span>
-                            <span class="skill-pill demo-skill-pill" data-cmd="/search-docs">/search-docs</span>
-                            <span class="skill-pill demo-skill-pill" data-cmd="/summarize-page">/summarize-page</span>
-                          </div>
-
-                          <div class="composer-input-row">
-                            <div id="demo-composer-text" class="composer-input-mock">Type instruction or choose
-                              /skill...
-                            </div>
-                            <button type="button" class="composer-send-btn" aria-label="Send Task">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </aside>
+                  <!-- Step 1 Card -->
+                  <div class="execution-step-card">
+                    <div class="step-header-row">
+                      <span class="step-tool-name">page_map()</span>
+                      <span class="step-state-tag done">18 controls &middot; 14ms</span>
                     </div>
+                    <div class="step-desc">Indexed interactive controls across current viewport. Shortlisted top
+                      candidates.</div>
+                  </div>
 
-                    <!-- Demo Bottom Control Bar -->
-                      <div class="demo-bottom-bar">
-                        <div>
-                          <strong style="color:#ffffff;">Illustrative Preview:</strong> This interactive mockup
-                          demonstrates
-                          Alfie's safety gate and step planning in action.
-                        </div>
-                          <div class="demo-bottom-actions">
-                            <button type="button" id="demo-mode-toggle" class="btn btn-secondary"
-                              style="padding:4px 10px; font-size:0.775rem;">
-                              Toggle Mode (Ask First / Full Auto)
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                  <!-- Step 2 Card -->
+                  <div class="execution-step-card">
+                    <div class="step-header-row">
+                      <span class="step-tool-name">type("privacy compliance", #search)</span>
+                      <span class="step-state-tag done">Verified &middot; 38ms</span>
                     </div>
+                    <div class="step-desc">Target matched to Search input box [5: Q]. Text entered safely.</div>
+                  </div>
+
+                  <!-- Step 3 Card (Active Waiting for User in Ask First mode) -->
+                  <div class="execution-step-card active-step">
+                    <div class="step-header-row">
+                      <span class="step-tool-name">click("Search button [6: B]")</span>
+                      <span id="demo-step3-state" class="step-state-tag wait">Waiting approval</span>
+                    </div>
+                    <div class="step-desc">Form submission step. Safety gate requires user confirmation before
+                      execution.</div>
+
+                    <!-- Approval Action Gate -->
+                    <div id="demo-approval-box" class="approval-action-box">
+                      <span style="font-size:0.775rem; color:#f59e0b; font-weight:600;">Confirm sensitive
+                        action?</span>
+                      <button type="button" id="demo-approve-btn" class="approval-btn">Approve Step</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Panel Composer & Quick Skills -->
+                <div class="panel-sim-composer">
+                  <div class="skills-pill-row">
+                    <span class="skill-pill demo-skill-pill" data-cmd="/extract-table">/extract-table</span>
+                    <span class="skill-pill demo-skill-pill" data-cmd="/search-docs">/search-docs</span>
+                    <span class="skill-pill demo-skill-pill" data-cmd="/summarize-page">/summarize-page</span>
+                  </div>
+
+                  <div class="composer-input-row">
+                    <div id="demo-composer-text" class="composer-input-mock">Type instruction or choose
+                      /skill...
+                    </div>
+                    <button type="button" class="composer-send-btn" aria-label="Send Task">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <!-- Demo Bottom Control Bar -->
+            <div class="demo-bottom-bar">
+              <div>
+                <strong style="color:#ffffff;">Illustrative Preview:</strong> This interactive mockup
+                demonstrates
+                Alfie's safety gate and step planning in action.
+              </div>
+              <div class="demo-bottom-actions">
+                <button type="button" id="demo-mode-toggle" class="btn btn-secondary"
+                  style="padding:4px 10px; font-size:0.775rem;">
+                  Toggle Mode (Ask First / Full Auto)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Local-First & Privacy Preview -->
@@ -450,11 +549,12 @@
         <div class="container container-narrow">
           <div class="section-header-row" style="text-align:center;">
             <span class="section-eyebrow">Local-First Architecture</span>
-            <h2 id="privacy-preview-heading" class="section-title">Built for local execution. Not cloud telemetry.
+            <h2 id="privacy-preview-heading" class="section-title">Built for Local Execution. Private and
+              Cost-Efficient.
             </h2>
             <p class="section-desc" style="margin: 0 auto var(--space-xl);">
-              The base Alfie extension is engineered to run locally in your browser. Your instructions, prompts,
-              and page context are evaluated on your own machine.
+              Alfie is built around an ultra-efficient semi-deterministic architecture. Your private data stays safely
+              on your computer while you cut costly cloud LLM token expenses.
             </p>
           </div>
 
@@ -466,11 +566,25 @@
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
               <div>
-                <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:4px;">No Third-Party AI Routing
-                  for Base Product</h4>
+                <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:4px;">No External Data Routing</h4>
                 <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">
-                  Unlike cloud-based assistant extensions that stream complete web pages and session cookies
-                  to external servers, Alfie’s base product processes actions on-device.
+                  Unlike cloud-based assistants that stream complete web pages and private credentials to external
+                  servers, Alfie executes actions locally on your own computer.
+                </p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:var(--space-md); align-items:flex-start;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"
+                style="flex-shrink:0; margin-top:2px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <div>
+                <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:4px;">Cooperating with LLMs for Massive Token
+                  Savings</h4>
+                <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">
+                  Routine web navigation runs with fast, reliable local precision. Alfie cooperates with language models
+                  only when needed, dramatically lowering token costs.
                 </p>
               </div>
             </div>
@@ -483,23 +597,8 @@
               <div>
                 <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:4px;">Zero Marketing Tracking</h4>
                 <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">
-                  Neither this website nor the base extension use tracking pixels, fingerprinting, or behavioral
-                  analytics cookies.
-                </p>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:var(--space-md); align-items:flex-start;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"
-                style="flex-shrink:0; margin-top:2px;">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <div>
-                <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:4px;">Clear Distinction for Future
-                  Cloud Features</h4>
-                <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">
-                  Any optional cloud-backed AI features or Pro capabilities introduced in the future will be
-                  explicitly disclosed before launch with opt-in controls.
+                  Neither this website nor the extension uses tracking pixels, fingerprinting, or behavioral analytics
+                  cookies.
                 </p>
               </div>
             </div>
@@ -523,72 +622,70 @@
             </p>
           </div>
 
-            <div class="pricing-grid">
-              <!-- Plan 1: Personal -->
-                <div class="pricing-card">
-                  <div>
-                    <span class="status-pill status-pill-success" style="margin-bottom:12px;">Non-Commercial</span>
-                    <h3 style="font-size:1.5rem; color:#ffffff; margin-bottom:8px;">Free Personal Edition</h3>
-                    <div style="font-size:2.25rem; font-weight:800; color:#ffffff; margin-bottom:12px;">$0 <span
-                        style="font-size:0.9rem; font-weight:500; color:var(--text-muted);">/ forever</span></div>
-                    <p style="font-size:0.925rem; color:var(--text-secondary); margin-bottom:var(--space-lg);">
-                      Full access to Alfie’s local automation assistant for personal, non-commercial use on your
-                      computer.
-                    </p>
-                    <ul class="product-features-list" style="grid-template-columns:1fr; margin-bottom:var(--space-lg);">
-                      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg> Complete local browser automation</li>
-                      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg> Keyboard shortcuts &amp; voice commands</li>
-                      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                          stroke-width="2">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg> Ask First safety confirmation gate</li>
-                    </ul>
-                  </div>
-                  <button type="button" class="btn btn-primary js-open-install" data-open-install
-                    style="width:100%; justify-content:center;">Get Free Extension</button>
-                </div>
-
-                <!-- Plan 2: Commercial -->
-                  <div class="pricing-card pricing-card-commercial">
-                    <div>
-                      <span class="status-pill status-pill-warning" style="margin-bottom:12px;">Business &amp;
-                        Enterprise</span>
-                      <h3 style="font-size:1.5rem; color:#ffffff; margin-bottom:8px;">Commercial Licence</h3>
-                      <div style="font-size:1.75rem; font-weight:700; color:#ffffff; margin-bottom:12px;">14-Day Free
-                        Trial</div>
-                      <p style="font-size:0.925rem; color:var(--text-secondary); margin-bottom:var(--space-lg);">
-                        Evaluate Alfie in your business workflow for 14 days. Commercial deployment and continued
-                        commercial use require an active commercial licence.
-                      </p>
-                      <ul class="product-features-list"
-                        style="grid-template-columns:1fr; margin-bottom:var(--space-lg);">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                          </svg> 14-day evaluation trial permitted</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                          </svg> Tailored business &amp; volume licensing</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                          </svg> Pro plans &amp; native AI agents: Coming Soon</li>
-                      </ul>
-                    </div>
-                    <a href="mailto:lawglitch@outlook.com?subject=Commercial%20Licensing%20Inquiry%20%E2%80%94%20Alfie&amp;body=Hello%2C%0A%0AI%20am%20interested%20in%20obtaining%20a%20commercial%20licence%20for%20Alfie.%0A%0APlease%20share%20the%20applicable%20licensing%20terms%2C%20pricing%2C%20and%20requirements.%0A%0AThank%20you."
-                      class="btn btn-secondary" style="width:100%; justify-content:center;">
-                      Inquire for Commercial Licence
-                    </a>
-                  </div>
-                </div>
+          <div class="pricing-grid">
+            <!-- Plan 1: Personal -->
+            <div class="pricing-card">
+              <div>
+                <span class="status-pill status-pill-success" style="margin-bottom:12px;">Non-Commercial</span>
+                <h3 style="font-size:1.5rem; color:#ffffff; margin-bottom:8px;">Free Personal Edition</h3>
+                <div style="font-size:2.25rem; font-weight:800; color:#ffffff; margin-bottom:12px;">$0 <span
+                    style="font-size:0.9rem; font-weight:500; color:var(--text-muted);">/ forever</span></div>
+                <p style="font-size:0.925rem; color:var(--text-secondary); margin-bottom:var(--space-lg);">
+                  Full access to Alfie’s local automation assistant for personal, non-commercial use on your
+                  computer.
+                </p>
+                <ul class="product-features-list" style="grid-template-columns:1fr; margin-bottom:var(--space-lg);">
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> Complete local browser automation</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> Keyboard shortcuts &amp; voice commands</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> Ask First safety confirmation gate</li>
+                </ul>
               </div>
+              <button type="button" class="btn btn-primary js-open-install" data-open-install
+                style="width:100%; justify-content:center;">Get Free Extension</button>
+            </div>
+
+            <!-- Plan 2: Commercial -->
+            <div class="pricing-card pricing-card-commercial">
+              <div>
+                <span class="status-pill status-pill-warning" style="margin-bottom:12px;">Business &amp;
+                  Enterprise</span>
+                <h3 style="font-size:1.5rem; color:#ffffff; margin-bottom:8px;">Commercial Licence</h3>
+                <div style="font-size:1.75rem; font-weight:700; color:#ffffff; margin-bottom:12px;">14-Day Free
+                  Trial</div>
+                <p style="font-size:0.925rem; color:var(--text-secondary); margin-bottom:var(--space-lg);">
+                  Evaluate Alfie in your business workflow for 14 days. Commercial deployment and continued
+                  commercial use require an active commercial licence.
+                </p>
+                <ul class="product-features-list" style="grid-template-columns:1fr; margin-bottom:var(--space-lg);">
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> 14-day evaluation trial permitted</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> Tailored business &amp; volume licensing</li>
+                  <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg> Pro plans &amp; native AI agents: Coming Soon</li>
+                </ul>
+              </div>
+              <a href="./contact/" class="btn btn-secondary" style="width:100%; justify-content:center;">
+                Inquire for Commercial Licence
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Final CTA -->
@@ -615,7 +712,7 @@
           </div>
 
           <p style="font-size:0.825rem; color:var(--text-dim); margin:0;">
-            Currently available on Microsoft Edge and Mozilla Firefox. Google Chrome is coming soon.
+            Compatible with Google Chrome, Microsoft Edge, Brave, Opera, Arc &amp; all Chromium-based browsers.
           </p>
         </div>
       </section>
@@ -644,18 +741,16 @@
               <li><a href="./">Home</a></li>
               <li><a href="./products/">Products</a></li>
               <li><a href="./terms/">Terms &amp; Privacy</a></li>
-              <li><a href="./dashboard/">Dashboard</a></li>
+              <li><a href="./custom-integrations/">Custom Integrations</a></li>
+              <li><a href="./contact/">Contact</a></li>
             </ul>
           </div>
 
           <div class="footer-nav-col">
             <h5>Contact &amp; Licensing</h5>
             <ul>
-              <li><a
-                  href="mailto:lawglitch@outlook.com?subject=Commercial%20Licensing%20Inquiry%20%E2%80%94%20Alfie">Commercial
-                  Licensing</a></li>
-              <li><a href="mailto:lawglitch@outlook.com?subject=Support%20Inquiry%20%E2%80%94%20Alfie">Support
-                  Inquiries</a></li>
+              <li><a href="./contact/">Commercial Licensing</a></li>
+              <li><a href="./contact/">Support Inquiries</a></li>
               <li><a href="./terms/#sec-terms">Terms of Use</a></li>
               <li><a href="./terms/#sec-cookies">No-Tracking Disclosure</a></li>
             </ul>
@@ -664,11 +759,10 @@
 
         <div class="footer-bottom">
           <div>
-            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong> &middot; Sole Proprietorship of
-            <strong>Sandipan Dutta</strong>. All rights reserved.
+            &copy; <span id="current-year">2026</span> <strong>LawGlitch</strong>. All rights reserved.
           </div>
           <div>
-            Hosted statically &middot; Zero Web Trackers &middot; Local Three.js (MIT)
+            Zero Web Trackers &middot; Local Three.js (MIT)
           </div>
         </div>
       </div>
@@ -677,6 +771,7 @@
 
   <!-- Shared product registry and install modal -->
   <script src="./assets/js/products.js"></script>
+  <script src="./assets/js/instruction-anim.js"></script>
   <script src="./assets/js/install-modal.js"></script>
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/vendor/three.min.js" defer></script>
