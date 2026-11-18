@@ -4,7 +4,7 @@
   "release_tag": "v1.0.0",
   "badge": "Stable",
   "released_at": "2026-11-02",
-  "url": "https://github.com/LawGlitch-net/Alfie-download/releases/download/v1.0.0/alfie-chromium-v1.0.0.zip",
+  "url": "https://github.com/LawGlitch-net/Alfie-download/releases/download/v1.0.0/Alfie-chromium.zip",
   "release_notes": "Initial public release of Alfie. Introduces local semantic element resolution, natural-language browser interaction, lightweight HTTP-based agent integrations, and efficient browser automation. Tested across major social media platforms, contact forms, and regular websites.",
   "versions": [
     {
@@ -12,7 +12,7 @@
       "release_tag": "v1.0.0",
       "badge": "Stable",
       "released_at": "2026-11-02",
-      "url": "https://github.com/LawGlitch-net/Alfie-download/releases/download/v1.0.0/alfie-chromium-v1.0.0.zip",
+      "url": "https://github.com/LawGlitch-net/Alfie-download/releases/download/v1.0.0/Alfie-chromium.zip",
       "release_notes": "Initial public release of Alfie. Introduces local semantic element resolution, natural-language browser interaction, lightweight HTTP-based agent integrations, and efficient browser automation. Tested across major social media platforms, contact forms, and regular websites."
     }
   ]
