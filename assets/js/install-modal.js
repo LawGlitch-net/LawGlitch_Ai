@@ -1,7 +1,7 @@
 /**
  * LawGlitch — Shared Installation Modal Component
- * Chromium-only download modal with interactive code instruction animation,
- * forced destination file picker, and migration guide.
+ * JSON-driven browser installation options, "Coming Soon" states,
+ * and Developer Mode manual installation walkthrough.
  */
 
 (function () {
@@ -12,10 +12,102 @@
 
   function getBasePath() {
     const path = window.location.pathname;
-    if (path.includes('/products/') || path.includes('/terms/') || path.includes('/legal/') || path.includes('/custom-integrations/')) {
+    if (path.includes('/products/') || path.includes('/terms/') || path.includes('/legal/') || path.includes('/custom-integrations/') || path.includes('/dashboard/') || path.includes('/blog/')) {
       return '../';
     }
     return './';
+  }
+
+  const defaultBrowsers = [
+    {
+      name: "Google Chrome",
+      icon: "assets/images/browser-chrome.svg",
+      url: "",
+      available: false
+    },
+    {
+      name: "Microsoft Edge",
+      icon: "assets/images/browser-edge.svg",
+      url: "",
+      available: false
+    },
+    {
+      name: "Brave",
+      icon: "assets/images/browser-brave.svg",
+      url: "",
+      available: false
+    },
+    {
+      name: "Other Chromium",
+      icon: "assets/images/chromium.svg",
+      url: "",
+      available: false
+    }
+  ];
+
+  async function loadBrowsersConfig() {
+    const basePath = getBasePath();
+    try {
+      const res = await fetch(basePath + 'assets/data/browsers.json');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.browsers) && data.browsers.length > 0) {
+          return data.browsers;
+        }
+      }
+    } catch (e) {
+      // fallback to defaultBrowsers
+    }
+    return defaultBrowsers;
+  }
+
+  function renderBrowserList(browsers, container) {
+    const basePath = getBasePath();
+    container.innerHTML = '';
+
+    browsers.forEach(b => {
+      const item = document.createElement('div');
+      item.className = 'browser-install-card';
+      item.style.cssText = `
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        transition: border-color 0.2s ease;
+      `;
+
+      const left = document.createElement('div');
+      left.style.cssText = 'display:flex; align-items:center; gap:12px;';
+
+      const iconPath = b.icon ? (b.icon.startsWith('http') ? b.icon : basePath + b.icon) : (basePath + 'assets/images/chromium.svg');
+      left.innerHTML = `
+        <img src="${iconPath}" alt="${b.name}" width="26" height="26" style="flex-shrink:0;">
+        <span style="font-weight:600; color:var(--text-main); font-size:0.95rem;">${b.name}</span>
+      `;
+
+      const right = document.createElement('div');
+      if (b.available && b.url && b.url.trim() !== '') {
+        right.innerHTML = `
+          <a href="${b.url}" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+            Install
+          </a>
+        `;
+      } else {
+        right.innerHTML = `
+          <button type="button" class="btn btn-sm" disabled style="opacity:0.55; cursor:not-allowed; background:rgba(255,255,255,0.06); color:var(--text-muted); border:1px solid rgba(255,255,255,0.1);">
+            Coming Soon
+          </button>
+        `;
+      }
+
+      item.appendChild(left);
+      item.appendChild(right);
+      container.appendChild(item);
+    });
   }
 
   function createModal() {
@@ -40,7 +132,7 @@
             <img src="${basePath}assets/images/alfie-logo/icon-128.png" alt="Alfie" width="28" height="28">
             <div class="modal-brand-text">
               <span class="modal-eyebrow">A LawGlitch Product</span>
-              <h3 id="modal-install-title" class="modal-title">Get Alfie for Chromium</h3>
+              <h3 id="modal-install-title" class="modal-title">Install Alfie for Browser</h3>
             </div>
           </div>
           <button type="button" class="modal-close-btn" id="modal-close-trigger" aria-label="Close dialog">
@@ -52,10 +144,26 @@
         </div>
 
         <div class="modal-body modal-body-scrollable">
-          <p id="modal-install-desc" class="modal-desc">
-            Download the official Alfie extension package for Chromium-based browsers (Chrome, Edge, Brave, Opera, Vivaldi, Arc). Follow the step-by-step walkthrough below to install unpacked in seconds.
+          <p id="modal-install-desc" class="modal-desc" style="margin-bottom:18px;">
+            Select your preferred Chromium-based browser to install the official extension, or install directly via Developer Mode below.
           </p>
 
+          <!-- JSON-driven Browser list container -->
+          <div id="modal-browser-list" style="margin-bottom:20px;">
+            <div style="text-align:center; padding:15px; color:var(--text-muted); font-size:0.9rem;">
+              Loading browser configuration...
+            </div>
+          </div>
+
+          <!-- Developer Installation Alternative Notice -->
+          <div style="background:rgba(2, 132, 199, 0.08); border:1px solid rgba(2, 132, 199, 0.25); border-radius:8px; padding:14px 16px; font-size:0.9rem; color:var(--text-secondary); margin-bottom:18px;">
+            Using another Chromium-based browser? You can also install Alfie manually through Developer Mode.
+            <button type="button" id="btn-toggle-dev-instructions" style="background:none; border:none; color:var(--accent); font-weight:600; text-decoration:underline; cursor:pointer; padding:0; margin-left:4px; font-size:inherit;">
+              Click here
+            </button>
+          </div>
+
+          <!-- Manual / Developer Unpacked Walkthrough (mounted conditionally or initially open) -->
           <div id="modal-instruction-mount"></div>
         </div>
       </div>
@@ -63,10 +171,25 @@
 
     document.body.appendChild(modal);
 
+    // Populate browser list
+    const browserListContainer = modal.querySelector('#modal-browser-list');
+    loadBrowsersConfig().then(browsers => {
+      renderBrowserList(browsers, browserListContainer);
+    });
+
     // Render instruction and download component inside modal
     const mount = modal.querySelector('#modal-instruction-mount');
     if (window.AlfieInstruction && window.AlfieInstruction.renderSection) {
       window.AlfieInstruction.renderSection(mount);
+    }
+
+    // Developer mode toggle
+    const toggleDevBtn = modal.querySelector('#btn-toggle-dev-instructions');
+    if (toggleDevBtn && mount) {
+      toggleDevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        mount.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
 
     // Close Button

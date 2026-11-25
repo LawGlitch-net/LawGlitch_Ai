@@ -1,0 +1,28 @@
+{
+  "browsers": [
+    {
+      "name": "Google Chrome",
+      "icon": "assets/images/browser-chrome.svg",
+      "url": "",
+      "available": false
+    },
+    {
+      "name": "Microsoft Edge",
+      "icon": "assets/images/browser-edge.svg",
+      "url": "",
+      "available": false
+    },
+    {
+      "name": "Brave",
+      "icon": "assets/images/browser-brave.svg",
+      "url": "",
+      "available": false
+    },
+    {
+      "name": "Other Chromium",
+      "icon": "assets/images/chromium.svg",
+      "url": "",
+      "available": false
+    }
+  ]
+}

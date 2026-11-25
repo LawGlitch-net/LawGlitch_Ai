@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard/
 
-Sitemap: https://lawglitch.com/sitemap.xml
+Sitemap: https://lawglitch.pages.dev/sitemap.xml

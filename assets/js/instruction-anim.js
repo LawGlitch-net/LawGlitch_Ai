@@ -41,7 +41,7 @@
 
   function getBasePath() {
     const p = window.location.pathname;
-    if (p.includes('/products/') || p.includes('/terms/') || p.includes('/legal/') || p.includes('/custom-integrations/')) {
+    if (p.includes('/products/') || p.includes('/terms/') || p.includes('/legal/') || p.includes('/custom-integrations/') || p.includes('/dashboard/') || p.includes('/blog/')) {
       return '../';
     }
     return './';
