@@ -1,15 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=../custom-integrations/">
-  <link rel="canonical" href="https://lawglitch.com/custom-integrations/">
-  <title>Redirecting to Custom Integrations...</title>
-  <script>
-    window.location.replace('../custom-integrations/');
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | LawGlitch — Alfie Agent Gateway</title>
+  <meta name="description" content="Manage your Alfie Agent Gateway credentials, monitor agent credits, and configure secure browser automation integrations.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dashboard | LawGlitch — Alfie Agent Gateway">
+  <meta property="og:description" content="Manage your Alfie Agent Gateway credentials, usage credits, and automation integrations.">
+  <meta property="og:image" content="../assets/images/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dashboard | LawGlitch">
+  <meta name="twitter:description" content="Alfie Agent Gateway credentials, credits, and account management.">
+  <meta name="twitter:image" content="../assets/images/og-image.png">
+
+  <!-- Theme & Favicon -->
+  <meta name="theme-color" content="#090d16">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <!-- Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../contact/supabase-config.js"></script>
+
+  <style>
+    .dashboard-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md) var(--space-3xl);
+    }
+
+    .dash-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-xl);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .dash-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: var(--space-md);
+    }
+
+    .dash-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin: 0;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-active {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .badge-inactive {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-plan {
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    .credential-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .credential-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .credential-input-group {
+      display: flex;
+      align-items: center;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: var(--space-xs) var(--space-sm);
+      gap: var(--space-sm);
+    }
+
+    .credential-value {
+      flex: 1;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      border-color: var(--border-glow);
+    }
+
+    .alert-box {
+      border-radius: var(--radius-md);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-lg);
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .alert-warning {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+    }
+
+    .alert-danger {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .alert-info {
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      color: #7dd3fc;
+    }
+
+    .alert-success {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #86efac;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin: var(--space-sm) 0 var(--space-md);
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+
+    .instructions-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-md);
+    }
+
+    .instructions-table th,
+    .instructions-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border-subtle);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .instructions-table th {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .instructions-table td code {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: var(--accent);
+      font-family: var(--font-mono, monospace);
+    }
+
+    .oauth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-medium);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      margin-bottom: var(--space-md);
+    }
+
+    .oauth-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .oauth-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .auth-box {
+      max-width: 480px;
+      margin: 40px auto;
+      text-align: center;
+    }
+  </style>
 </head>
-<body style="background:#090d16; color:#ffffff; font-family:sans-serif; text-align:center; padding:50px;">
-  <p>Redirecting to <a href="../custom-integrations/" style="color:#0284c7;">Custom Integrations</a>...</p>
+
+<body>
+  <div class="site-bg-glow" aria-hidden="true"></div>
+  <div class="site-bg-grid" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="site-header" role="banner">
+      <div class="container nav-container">
+        <a href="../" class="brand-link brand-lockup" aria-label="LawGlitch Home — Alfie">
+          <div class="brand-logo-frame">
+            <img src="../favicon.png" alt="LawGlitch Logo" class="brand-logo-img" width="34" height="34">
+          </div>
+          <div class="brand-title-group">
+            <span class="brand-title">LawGlitch</span>
+            <span class="brand-subtitle">Dashboard</span>
+          </div>
+        </a>
+
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <nav id="primary-nav" class="nav-links" role="navigation" aria-label="Primary navigation">
+          <a href="../">Home</a>
+          <a href="../products/">Products</a>
+          <a href="../blog/">Blog</a>
+          <a href="../terms/">Terms &amp; Privacy</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="../contact/">Contact</a>
+          <a href="./" class="active" aria-current="page">Dashboard</a>
+          <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" role="main" class="dashboard-container">
+      <!-- Loading State -->
+      <div id="dash-loading" style="text-align:center; padding: 60px 20px;">
+        <div class="pulse-dot" style="margin: 0 auto 16px; width: 16px; height: 16px;"></div>
+        <p style="color:var(--text-muted);">Connecting to LawGlitch Authentication...</p>
+      </div>
+
+      <!-- Terms & Conditions Onboarding (shown for new users / outdated version) -->
+      <div id="dash-terms-view" style="display:none; max-width: 640px; margin: 0 auto;">
+        <div class="dash-card">
+          <!-- Header -->
+          <div style="text-align:center; margin-bottom: var(--space-xl);">
+            <img src="../assets/images/alfie-logo/icon-128.png" alt="Alfie" width="52" height="52"
+              style="margin-bottom: 16px; border-radius: 12px;">
+            <h1 style="font-size:1.6rem; font-weight:800; margin-bottom:10px; color:var(--text-main);">
+              Before you get started
+            </h1>
+            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; max-width:500px; margin:0 auto;">
+              Welcome to Alfie. Before accessing your account, please review and accept the following documents.
+              Alfie can interact with your browser and perform actions on your behalf, so it's important that
+              you understand how the product works, its permissions, and your responsibilities.
+            </p>
+          </div>
+
+          <!-- Document Links -->
+          <div style="display:flex; gap:var(--space-md); flex-wrap:wrap; margin-bottom:var(--space-xl);">
+            <a href="../terms/" target="_blank" rel="noopener noreferrer"
+              style="flex:1; min-width:200px; display:flex; align-items:center; gap:10px;
+                     background:rgba(255,255,255,0.04); border:1px solid var(--border-medium);
+                     border-radius:var(--radius-md); padding:14px 18px; color:var(--text-main);
+                     text-decoration:none; transition:all 0.2s ease;"
+              onmouseover="this.style.borderColor='var(--primary)'; this.style.background='rgba(255,255,255,0.08)'"
+              onmouseout="this.style.borderColor='var(--border-medium)'; this.style.background='rgba(255,255,255,0.04)'">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink:0;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+              <div>
+                <div style="font-weight:700; font-size:0.95rem;">Terms &amp; Conditions</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">Opens in new tab ↗</div>
+              </div>
+            </a>
+
+            <a href="../terms/" target="_blank" rel="noopener noreferrer"
+              style="flex:1; min-width:200px; display:flex; align-items:center; gap:10px;
+                     background:rgba(255,255,255,0.04); border:1px solid var(--border-medium);
+                     border-radius:var(--radius-md); padding:14px 18px; color:var(--text-main);
+                     text-decoration:none; transition:all 0.2s ease;"
+              onmouseover="this.style.borderColor='var(--accent)'; this.style.background='rgba(255,255,255,0.08)'"
+              onmouseout="this.style.borderColor='var(--border-medium)'; this.style.background='rgba(255,255,255,0.04)'">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0;">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <div>
+                <div style="font-weight:700; font-size:0.95rem;">Privacy Policy</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">Opens in new tab ↗</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Mandatory Legal Acceptance -->
+          <div style="border:1px solid var(--border-medium); border-radius:var(--radius-md);
+                      padding:var(--space-md) var(--space-lg); margin-bottom:var(--space-md);
+                      background:rgba(255,255,255,0.02);">
+            <label style="display:flex; gap:14px; align-items:flex-start; cursor:pointer;">
+              <div style="flex-shrink:0; margin-top:3px;">
+                <input type="checkbox" id="chk-terms-mandatory"
+                  style="width:18px; height:18px; cursor:pointer; accent-color:var(--primary);">
+              </div>
+              <span style="font-size:0.9rem; color:var(--text-secondary); line-height:1.55;">
+                <strong style="color:var(--text-main);">Required:</strong>
+                I have read and agree to the Terms &amp; Conditions and Privacy Policy. I understand
+                that Alfie can interact with browser content and perform actions based on my instructions,
+                and I accept responsibility for reviewing and supervising its actions.
+              </span>
+            </label>
+          </div>
+
+          <!-- Optional Marketing Consent -->
+          <div style="border:1px solid var(--border-subtle); border-radius:var(--radius-md);
+                      padding:var(--space-md) var(--space-lg); margin-bottom:var(--space-xl);
+                      background:rgba(255,255,255,0.01);">
+            <label style="display:flex; gap:14px; align-items:flex-start; cursor:pointer;">
+              <div style="flex-shrink:0; margin-top:3px;">
+                <input type="checkbox" id="chk-terms-marketing"
+                  style="width:18px; height:18px; cursor:pointer; accent-color:var(--accent);">
+              </div>
+              <span style="font-size:0.88rem; color:var(--text-muted); line-height:1.55;">
+                <strong style="color:var(--text-secondary);">Optional:</strong>
+                I agree to receive occasional emails from LawGlitch about product updates, new features,
+                relevant services and custom AI integrations. I understand that I can unsubscribe at any time.
+              </span>
+            </label>
+          </div>
+
+          <!-- Error Message -->
+          <p id="terms-error-msg" style="color:#f87171; font-size:0.88rem; margin-bottom:var(--space-md); display:none; line-height:1.5;"></p>
+
+          <!-- Action Buttons -->
+          <div style="display:flex; flex-direction:column; gap:var(--space-sm);">
+            <button type="button" id="btn-accept-terms" class="btn btn-primary" disabled
+              style="width:100%; padding:14px 20px; font-size:1rem; font-weight:700;">
+              Accept &amp; Continue
+            </button>
+            <button type="button" id="btn-terms-sign-out" class="btn-copy"
+              style="width:100%; padding:10px 20px; text-align:center; justify-content:center;">
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logged-Out / Sign In View -->
+      <div id="dash-auth-view" class="dash-card auth-box" style="display:none;">
+        <img src="../assets/images/alfie-logo/icon-128.png" alt="Alfie" width="56" height="56" style="margin-bottom:16px;">
+        <h2 style="font-size:1.6rem; margin-bottom:8px;">Sign in to Alfie Dashboard</h2>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:28px;">
+          Authenticate to access your Alfie Agent Gateway credentials, manage credits, and connect the browser extension.
+        </p>
+
+        <button type="button" class="oauth-btn" id="btn-login-google">
+          <!-- Google SVG Icon -->
+          <svg viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <button type="button" class="oauth-btn" id="btn-login-github">
+          <!-- GitHub SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          Continue with GitHub
+        </button>
+
+        <p id="auth-error-msg" style="color:#f87171; font-size:0.85rem; margin-top:14px; display:none;"></p>
+      </div>
+
+      <!-- Logged-In Authenticated Dashboard View -->
+      <div id="dash-main-view" style="display:none;">
+        <!-- Account Overview Card -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <span class="modal-eyebrow" style="color:var(--accent);">Authenticated User</span>
+              <h1 class="dash-card-title" style="font-size:1.45rem;">
+                <span id="user-display-email">user@example.com</span>
+              </h1>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <span id="badge-account-status" class="badge-pill badge-active">Active</span>
+              <span id="badge-account-plan" class="badge-pill badge-plan">Beta Plan</span>
+              <button type="button" class="btn-copy" id="btn-refresh-profile" style="padding:6px 14px;" title="Sync latest account status and credits">Refresh</button>
+              <button type="button" class="btn-copy" id="btn-sign-out" style="padding:6px 14px;">Sign Out</button>
+            </div>
+          </div>
+
+          <!-- Inactive Account Banner (rendered when account_active === false) -->
+          <div id="alert-account-inactive" class="alert-box alert-warning" style="display:none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <div>
+              <strong>Account Pending Activation:</strong> Your account doesn't appear to be active yet. Please contact us at <a href="mailto:lawglitch@outlook.com" style="color:#fbbf24; text-decoration:underline;">lawglitch@outlook.com</a> to learn more about activation.
+            </div>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--text-muted); display:flex; gap:20px; flex-wrap:wrap;">
+            <span>Joined: <strong id="val-joined-date" style="color:var(--text-secondary);">-</strong></span>
+            <span>User ID: <code id="val-user-id" style="color:var(--text-dim);">-</code></span>
+          </div>
+        </div>
+
+        <!-- Alfie Agent Gateway Credentials Card -->
+        <div class="dash-card" id="gateway-card">
+          <div class="dash-card-header">
+            <h2 class="dash-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              Alfie Agent Gateway
+            </h2>
+            <div style="display:flex; gap:8px;">
+              <button type="button" class="btn btn-primary btn-sm" id="btn-generate-key" style="display:inline-flex; align-items:center; gap:6px;">
+                <span style="font-size:1.1rem; line-height:1;">+</span> Generate Password
+              </button>
+              <button type="button" class="btn-copy" id="btn-revoke-key" style="color:#f87171; border-color:rgba(239,68,68,0.25);">
+                Revoke
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback messages -->
+          <div id="gateway-feedback" style="display:none;"></div>
+
+          <!-- Credentials Display -->
+          <div class="credential-row">
+            <span class="credential-label">Username (HTTP Basic Auth)</span>
+            <div class="credential-input-group">
+              <input type="text" id="cred-username" class="credential-value" readonly value="">
+              <button type="button" class="btn-copy" data-copy-target="cred-username">Copy</button>
+            </div>
+          </div>
+
+          <div class="credential-row">
+            <span class="credential-label">One-Time Gateway Password</span>
+            <div class="credential-input-group">
+              <input type="text" id="cred-password" class="credential-value" readonly value="••••••••••••••••••••••••">
+              <button type="button" class="btn-copy" id="btn-copy-password" data-copy-target="cred-password">Copy</button>
+            </div>
+          </div>
+
+          <div class="alert-box alert-info" id="password-security-warning">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <div>
+              <strong>Security Notice:</strong> This password is not stored here in raw form. You will never be able to view it again after leaving this page, so make sure to copy it and keep it somewhere secure. Generating another credential will immediately replace the existing one.
+            </div>
+          </div>
+
+          <!-- Setup Instructions -->
+          <div style="margin-top:var(--space-xl); padding-top:var(--space-lg); border-top:1px solid var(--border-subtle);">
+            <h3 style="font-size:1.1rem; margin-bottom:var(--space-sm); color:var(--text-main);">How to connect Alfie to your account</h3>
+            <ol style="margin-left:20px; color:var(--text-secondary); line-height:1.7; font-size:0.95rem; margin-bottom:var(--space-md);">
+              <li>Open your Alfie browser extension.</li>
+              <li>Navigate to <strong>Extension Settings</strong>.</li>
+              <li>Open <strong>Custom HTTP</strong> and select <strong>Add Integration</strong>.</li>
+              <li>Choose <strong>Alfie Agent Gateway</strong> from the provider templates.</li>
+              <li>Enter the following credentials:</li>
+            </ol>
+
+            <table class="instructions-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Value</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Provider</strong></td>
+                  <td>Alfie Agent Gateway</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><strong>URL</strong></td>
+                  <td>
+                    <code id="val-gateway-url">https://alfie.lawglitch.workers.dev</code>
+                  </td>
+                  <td>
+                    <button type="button" class="btn-copy" data-copy-text="https://alfie.lawglitch.workers.dev">Copy URL</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Username</strong></td>
+                  <td><span id="table-username" style="color:var(--text-secondary); font-family:monospace;">Your registered email</span></td>
+                  <td>
+                    <button type="button" class="btn-copy" id="btn-copy-table-username">Copy</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Password</strong></td>
+                  <td>Your generated one-time password</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Usage & Credits Card -->
+        <div class="dash-card" id="usage-card">
+          <div class="dash-card-header">
+            <h2 class="dash-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              Usage &amp; Credits
+            </h2>
+            <div style="font-size:0.9rem; color:var(--text-muted);">
+              Total Allocation: <strong id="val-credits-total" style="color:var(--text-main);">0</strong>
+            </div>
+          </div>
+
+          <!-- Visual Progress Bar -->
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-bottom:4px;">
+            <span>Credits Used: <strong id="val-credits-used" style="color:var(--text-main);">0</strong></span>
+            <span>Available: <strong id="val-credits-remaining" style="color:var(--accent);">0</strong></span>
+          </div>
+
+          <div class="progress-bar-container" aria-label="Usage progress bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div id="credits-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+          </div>
+
+          <!-- Zero credits limit reached banner -->
+          <div id="alert-credits-zero" class="alert-box alert-danger" style="display:none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+            </svg>
+            <div>
+              You've reached your current usage limit. Contact us to upgrade your plan or request additional credits: <a href="mailto:lawglitch@outlook.com" style="color:#fca5a5; text-decoration:underline;">lawglitch@outlook.com</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <p>&copy; 2026 LawGlitch. Alfie Agent Gateway. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../products/">Products</a>
+          <a href="../blog/">Blog</a>
+          <a href="../terms/">Terms &amp; Privacy</a>
+          <a href="../contact/">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Shared Installation Modal Controller -->
+  <script src="../assets/js/instruction-anim.js"></script>
+  <script src="../assets/js/install-modal.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="./dashboard.js"></script>
 </body>
+
 </html>

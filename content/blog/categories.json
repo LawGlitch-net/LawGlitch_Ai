@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "browser-automation",
+      "name": "Browser Automation",
+      "description": "Practical guides and architectural analyses on modern browser automation techniques."
+    },
+    {
+      "id": "ai-agents",
+      "name": "AI Agents",
+      "description": "Deep dives into how autonomous AI agents plan, interact with tools, and run business workflows."
+    },
+    {
+      "id": "productivity",
+      "name": "Productivity & Workflows",
+      "description": "Tactics and systems to eliminate repetitive digital busywork and streamline online operations."
+    },
+    {
+      "id": "integrations",
+      "name": "Integrations & APIs",
+      "description": "Connecting browser automation tools to n8n, webhooks, and private backend infrastructure."
+    },
+    {
+      "id": "tutorials",
+      "name": "Tutorials & Guides",
+      "description": "Hands-on tutorials for configuring extensions, custom endpoints, and workflows."
+    },
+    {
+      "id": "updates",
+      "name": "LawGlitch Updates",
+      "description": "Product updates, release notes, and studio announcements from LawGlitch."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "site": {
+    "name": "LawGlitch",
+    "url": "https://lawglitch.pages.dev",
+    "defaultTitle": "LawGlitch | AI Agents, Automation & Custom Integrations",
+    "defaultDescription": "Explore Alfie, an AI-powered browser assistant, and discover custom AI agents, integrations and automation solutions by LawGlitch.",
+    "defaultImage": "/assets/images/og-image.png",
+    "twitterHandle": ""
+  },
+  "pages": {
+    "home": {
+      "path": "/",
+      "title": "LawGlitch | AI Agents & Browser Automation",
+      "description": "Discover Alfie, an AI-powered browser assistant, and explore custom AI agents and automation solutions.",
+      "keywords": [
+        "AI browser automation",
+        "browser assistant",
+        "AI agents",
+        "workflow automation",
+        "custom AI integrations"
+      ],
+      "index": true
+    },
+    "alfie": {
+      "path": "/products/",
+      "title": "Alfie | AI-Powered Browser Automation Assistant",
+      "description": "Automate repetitive browser tasks with Alfie. Give natural-language instructions and execute visible, step-by-step browser actions.",
+      "keywords": [
+        "AI browser assistant",
+        "browser automation extension",
+        "AI web automation",
+        "Chromium browser automation"
+      ],
+      "index": true
+    },
+    "blog": {
+      "path": "/blog/",
+      "title": "LawGlitch Blog | AI Agents, Browser Automation & Productivity",
+      "description": "Guides, architectural insights, and tutorials on AI agents, browser automation, and high-efficiency workflows.",
+      "keywords": [
+        "browser automation guide",
+        "AI agents tutorial",
+        "workflow automation",
+        "browser extension development"
+      ],
+      "index": true
+    },
+    "dashboard": {
+      "path": "/dashboard/",
+      "title": "Dashboard | LawGlitch — Alfie Agent Gateway",
+      "description": "Access Alfie Agent Gateway credentials, monitor agent credits, and configure secure browser automation integrations.",
+      "index": false
+    },
+    "custom_integrations": {
+      "path": "/custom-integrations/",
+      "title": "Custom Integrations | LawGlitch",
+      "description": "Connect Alfie to custom HTTP endpoints, n8n webhooks, internal APIs, and self-hosted AI models.",
+      "index": true
+    },
+    "contact": {
+      "path": "/contact/",
+      "title": "Contact LawGlitch | Custom AI Agents & Integrations",
+      "description": "Discuss custom AI agents, business automation, API integrations and tailored software solutions with LawGlitch.",
+      "index": true
+    },
+    "terms": {
+      "path": "/terms/",
+      "title": "Terms of Service & Privacy Policy | LawGlitch",
+      "description": "Read LawGlitch terms of service, acceptable use guidelines, and privacy commitment for Alfie.",
+      "index": true
+    }
+  }
+}

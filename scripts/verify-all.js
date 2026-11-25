@@ -7,7 +7,12 @@ const pages = [
   'products/index.html',
   'custom-integrations/index.html',
   'terms/index.html',
-  'contact/index.html'
+  'contact/index.html',
+  'dashboard/index.html',
+  'blog/index.html',
+  'blog/what-is-browser-automation/index.html',
+  'blog/how-ai-agents-work/index.html',
+  'blog/automating-repetitive-browser-tasks/index.html'
 ];
 
 let totalErrors = 0;
@@ -124,7 +129,9 @@ const jsFiles = [
   'assets/js/products.js',
   'assets/js/instruction-anim.js',
   'assets/js/install-modal.js',
-  'assets/js/integrations.js'
+  'assets/js/integrations.js',
+  'dashboard/dashboard.js',
+  'cloudflare/worker.js'
 ];
 jsFiles.forEach(f => {
   try {
