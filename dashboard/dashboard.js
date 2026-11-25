@@ -23,47 +23,47 @@
   let currentProfile = null;
 
   // ── DOM References ─────────────────────────────────────────────────────────
-  const elLoading    = document.getElementById('dash-loading');
-  const elAuthView   = document.getElementById('dash-auth-view');
-  const elTermsView  = document.getElementById('dash-terms-view');
-  const elMainView   = document.getElementById('dash-main-view');
+  const elLoading = document.getElementById('dash-loading');
+  const elAuthView = document.getElementById('dash-auth-view');
+  const elTermsView = document.getElementById('dash-terms-view');
+  const elMainView = document.getElementById('dash-main-view');
 
   const btnLoginGoogle = document.getElementById('btn-login-google');
   const btnLoginGithub = document.getElementById('btn-login-github');
   const btnRefreshProfile = document.getElementById('btn-refresh-profile');
-  const btnSignOut     = document.getElementById('btn-sign-out');
-  const authErrorMsg   = document.getElementById('auth-error-msg');
+  const btnSignOut = document.getElementById('btn-sign-out');
+  const authErrorMsg = document.getElementById('auth-error-msg');
 
   // Account overview elements
-  const elDisplayEmail  = document.getElementById('user-display-email');
-  const elJoinedDate    = document.getElementById('val-joined-date');
-  const elUserId        = document.getElementById('val-user-id');
-  const elBadgeStatus   = document.getElementById('badge-account-status');
-  const elBadgePlan     = document.getElementById('badge-account-plan');
+  const elDisplayEmail = document.getElementById('user-display-email');
+  const elJoinedDate = document.getElementById('val-joined-date');
+  const elUserId = document.getElementById('val-user-id');
+  const elBadgeStatus = document.getElementById('badge-account-status');
+  const elBadgePlan = document.getElementById('badge-account-plan');
   const elAlertInactive = document.getElementById('alert-account-inactive');
 
   // Gateway elements
-  const elGatewayCard    = document.getElementById('gateway-card');
-  const elCredUsername   = document.getElementById('cred-username');
-  const elCredPassword   = document.getElementById('cred-password');
-  const elTableUsername  = document.getElementById('table-username');
-  const btnGenerateKey   = document.getElementById('btn-generate-key');
-  const btnRevokeKey     = document.getElementById('btn-revoke-key');
+  const elGatewayCard = document.getElementById('gateway-card');
+  const elCredUsername = document.getElementById('cred-username');
+  const elCredPassword = document.getElementById('cred-password');
+  const elTableUsername = document.getElementById('table-username');
+  const btnGenerateKey = document.getElementById('btn-generate-key');
+  const btnRevokeKey = document.getElementById('btn-revoke-key');
   const elGatewayFeedback = document.getElementById('gateway-feedback');
 
   // Usage elements
-  const elValCreditsTotal     = document.getElementById('val-credits-total');
-  const elValCreditsUsed      = document.getElementById('val-credits-used');
+  const elValCreditsTotal = document.getElementById('val-credits-total');
+  const elValCreditsUsed = document.getElementById('val-credits-used');
   const elValCreditsRemaining = document.getElementById('val-credits-remaining');
   const elCreditsProgressFill = document.getElementById('credits-progress-fill');
-  const elAlertCreditsZero    = document.getElementById('alert-credits-zero');
+  const elAlertCreditsZero = document.getElementById('alert-credits-zero');
 
   // Terms onboarding elements
-  const chkTermsMandatory  = document.getElementById('chk-terms-mandatory');
-  const chkTermsMarketing  = document.getElementById('chk-terms-marketing');
-  const btnAcceptTerms     = document.getElementById('btn-accept-terms');
-  const btnTermsSignOut    = document.getElementById('btn-terms-sign-out');
-  const elTermsError       = document.getElementById('terms-error-msg');
+  const chkTermsMandatory = document.getElementById('chk-terms-mandatory');
+  const chkTermsMarketing = document.getElementById('chk-terms-marketing');
+  const btnAcceptTerms = document.getElementById('btn-accept-terms');
+  const btnTermsSignOut = document.getElementById('btn-terms-sign-out');
+  const elTermsError = document.getElementById('terms-error-msg');
 
   // ── Profile Cache Helpers ──────────────────────────────────────────────────
 
@@ -207,12 +207,12 @@
 
     // Credits & Usage
     const remaining = Number(profile.credits_remaining) || 0;
-    const used      = Number(profile.credits_used)      || 0;
-    const total     = remaining + used;
+    const used = Number(profile.credits_used) || 0;
+    const total = remaining + used;
 
     if (elValCreditsRemaining) elValCreditsRemaining.textContent = remaining.toLocaleString();
-    if (elValCreditsUsed)      elValCreditsUsed.textContent      = used.toLocaleString();
-    if (elValCreditsTotal)     elValCreditsTotal.textContent     = total.toLocaleString();
+    if (elValCreditsUsed) elValCreditsUsed.textContent = used.toLocaleString();
+    if (elValCreditsTotal) elValCreditsTotal.textContent = total.toLocaleString();
 
     let pct = 0;
     if (total > 0) pct = Math.min(100, Math.round((used / total) * 100));
@@ -479,100 +479,94 @@
     setupCopyButtons();
     initTermsView();
 
-    if (!supabase) return;
     if (!supabase) {
       showView(elAuthView);
       return;
     }
 
     // Check existing session on page load
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-      currentSession = session;
-      await loadUserProfile(session);
-    } else {
-    try {
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-      if (sessionError) throw sessionError;
-      if (session) {
-        currentSession = session;
-        await loadUserProfile(session);
-      } else {
-        showView(elAuthView);
-      }
-    } catch (err) {
-      console.error('Auth initialization error:', err);
-      showView(elAuthView);
-      showError(err.message || 'Unable to verify authentication session. Please try signing in again.');
-    }
-
-    // Listen for auth state changes (login / logout / token refresh)
-    supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session) {
-        const isNewSession = !currentSession || currentSession.user.id !== session.user.id;
-        currentSession = session;
-        // Only reload profile on a genuinely new session / sign-in
-        // TOKEN_REFRESHED fires frequently — the cache handles it
-        if (isNewSession || event === 'SIGNED_IN') {
+      try {
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        if (sessionError) throw sessionError;
+        if (session) {
+          currentSession = session;
           await loadUserProfile(session);
+        } else {
+          showView(elAuthView);
         }
-      } else {
-        if (currentSession) clearCachedProfile(currentSession.user.id);
-        currentSession = null;
-        currentProfile = null;
+      } catch (err) {
+        console.error('Auth initialization error:', err);
         showView(elAuthView);
+        showError(err.message || 'Unable to verify authentication session. Please try signing in again.');
       }
-    });
 
-    // Google Login
-    if (btnLoginGoogle) {
-      btnLoginGoogle.addEventListener('click', async () => {
-        const redirectUrl = window.location.href.split('#')[0].split('?')[0];
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: 'google',
-          options: { redirectTo: redirectUrl },
-        });
-        if (error) showError(error.message);
-      });
-    }
-
-    // GitHub Login
-    if (btnLoginGithub) {
-      btnLoginGithub.addEventListener('click', async () => {
-        const redirectUrl = window.location.href.split('#')[0].split('?')[0];
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: 'github',
-          options: { redirectTo: redirectUrl },
-        });
-        if (error) showError(error.message);
-      });
-    }
-
-    // Refresh Profile (bypasses browser cache)
-    if (btnRefreshProfile) {
-      btnRefreshProfile.addEventListener('click', async () => {
-        if (!currentSession) return;
-        btnRefreshProfile.disabled = true;
-        btnRefreshProfile.textContent = 'Syncing…';
-        try {
-          await loadUserProfile(currentSession, true);
-        } finally {
-          btnRefreshProfile.disabled = false;
-          btnRefreshProfile.textContent = 'Refresh';
+      // Listen for auth state changes (login / logout / token refresh)
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        if (session) {
+          const isNewSession = !currentSession || currentSession.user.id !== session.user.id;
+          currentSession = session;
+          // Only reload profile on a genuinely new session / sign-in
+          // TOKEN_REFRESHED fires frequently — the cache handles it
+          if (isNewSession || event === 'SIGNED_IN') {
+            await loadUserProfile(session);
+          }
+        } else {
+          if (currentSession) clearCachedProfile(currentSession.user.id);
+          currentSession = null;
+          currentProfile = null;
+          showView(elAuthView);
         }
       });
-    }
 
-    // Sign Out (main dashboard)
-    if (btnSignOut) {
-      btnSignOut.addEventListener('click', async () => {
-        if (currentSession) clearCachedProfile(currentSession.user.id);
-        await supabase.auth.signOut();
-      });
-    }
+      // Google Login
+      if (btnLoginGoogle) {
+        btnLoginGoogle.addEventListener('click', async () => {
+          const redirectUrl = window.location.href.split('#')[0].split('?')[0];
+          const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: { redirectTo: redirectUrl },
+          });
+          if (error) showError(error.message);
+        });
+      }
 
-    // Key Management
-    if (btnGenerateKey) btnGenerateKey.addEventListener('click', handleGenerateKey);
-    if (btnRevokeKey)   btnRevokeKey.addEventListener('click', handleRevokeKey);
-  });
+      // GitHub Login
+      if (btnLoginGithub) {
+        btnLoginGithub.addEventListener('click', async () => {
+          const redirectUrl = window.location.href.split('#')[0].split('?')[0];
+          const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'github',
+            options: { redirectTo: redirectUrl },
+          });
+          if (error) showError(error.message);
+        });
+      }
+
+      // Refresh Profile (bypasses browser cache)
+      if (btnRefreshProfile) {
+        btnRefreshProfile.addEventListener('click', async () => {
+          if (!currentSession) return;
+          btnRefreshProfile.disabled = true;
+          btnRefreshProfile.textContent = 'Syncing…';
+          try {
+            await loadUserProfile(currentSession, true);
+          } finally {
+            btnRefreshProfile.disabled = false;
+            btnRefreshProfile.textContent = 'Refresh';
+          }
+        });
+      }
+
+      // Sign Out (main dashboard)
+      if (btnSignOut) {
+        btnSignOut.addEventListener('click', async () => {
+          if (currentSession) clearCachedProfile(currentSession.user.id);
+          await supabase.auth.signOut();
+        });
+      }
+
+      // Key Management
+      if (btnGenerateKey) btnGenerateKey.addEventListener('click', handleGenerateKey);
+      if (btnRevokeKey) btnRevokeKey.addEventListener('click', handleRevokeKey);
+    });
 })();
