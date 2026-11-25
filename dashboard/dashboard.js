@@ -480,6 +480,10 @@
     initTermsView();
 
     if (!supabase) return;
+    if (!supabase) {
+      showView(elAuthView);
+      return;
+    }
 
     // Check existing session on page load
     const { data: { session } } = await supabase.auth.getSession();
@@ -487,7 +491,19 @@
       currentSession = session;
       await loadUserProfile(session);
     } else {
+    try {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) throw sessionError;
+      if (session) {
+        currentSession = session;
+        await loadUserProfile(session);
+      } else {
+        showView(elAuthView);
+      }
+    } catch (err) {
+      console.error('Auth initialization error:', err);
       showView(elAuthView);
+      showError(err.message || 'Unable to verify authentication session. Please try signing in again.');
     }
 
     // Listen for auth state changes (login / logout / token refresh)
