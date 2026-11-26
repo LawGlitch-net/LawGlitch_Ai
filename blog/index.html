@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &amp; Insights | LawGlitch — AI Agents &amp; Browser Automation</title>
+  <meta name="description" content="Explore articles, guides, and engineering insights on AI agents, modern browser automation, productivity workflows, and custom integrations from LawGlitch.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog &amp; Insights | LawGlitch">
+  <meta property="og:description" content="Guides and engineering insights on AI agents, modern browser automation, and productivity workflows.">
+  <meta property="og:image" content="../assets/images/og-image.png">
+  <link rel="canonical" href="https://lawglitch.pages.dev/blog/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog &amp; Insights | LawGlitch">
+  <meta name="twitter:description" content="Guides and engineering insights on AI agents and browser automation.">
+  <meta name="twitter:image" content="../assets/images/og-image.png">
+
+  <!-- Theme & Favicon -->
+  <meta name="theme-color" content="#090d16">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    .blog-hero {
+      padding: var(--space-3xl) 0 var(--space-xl);
+      text-align: center;
+    }
+
+    .category-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: var(--space-xl) 0 var(--space-2xl);
+    }
+
+    .category-filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .category-filter-btn:hover,
+    .category-filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .article-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .article-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .article-category-badge {
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .article-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: var(--space-sm);
+      line-height: 1.4;
+    }
+
+    .article-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+      flex: 1;
+    }
+
+    .read-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .article-card:hover .read-more-link {
+      gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-bg-glow" aria-hidden="true"></div>
+  <div class="site-bg-grid" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="site-header" role="banner">
+      <div class="container nav-container">
+        <a href="../" class="brand-link brand-lockup" aria-label="LawGlitch Home — Alfie">
+          <div class="brand-logo-frame">
+            <img src="../favicon.png" alt="LawGlitch Logo" class="brand-logo-img" width="34" height="34">
+          </div>
+          <div class="brand-title-group">
+            <span class="brand-title">LawGlitch</span>
+            <span class="brand-subtitle">Blog &amp; Insights</span>
+          </div>
+        </a>
+
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav"
+          aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <nav id="primary-nav" class="nav-links" role="navigation" aria-label="Primary navigation">
+          <a href="../">Home</a>
+          <a href="../products/">Products</a>
+          <a href="./" class="active" aria-current="page">Blog</a>
+          <a href="../terms/">Terms &amp; Privacy</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="../contact/">Contact</a>
+          <a href="../dashboard/">Dashboard</a>
+          <button type="button" class="btn btn-primary btn-sm js-open-install" data-open-install>Get Alfie</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <!-- Blog Hero -->
+      <section class="blog-hero">
+        <div class="container container-narrow">
+          <div class="hero-eyebrow-badge" style="margin: 0 auto 16px;">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>LawGlitch Topical Authority &amp; Knowledge Base</span>
+          </div>
+          <h1 class="hero-title" style="font-size:2.6rem;">Insights &amp; Engineering Articles</h1>
+          <p class="section-desc" style="max-width:680px; margin: 0 auto;">
+            Explore practical guides, architectural analyses, and tutorials on AI agents, modern browser automation, and high-efficiency workflows.
+          </p>
+
+          <!-- Category filter buttons -->
+          <div class="category-pills-row">
+            <button type="button" class="category-filter-btn active" data-filter="all">All Articles</button>
+            <button type="button" class="category-filter-btn" data-filter="browser-automation">Browser Automation</button>
+            <button type="button" class="category-filter-btn" data-filter="ai-agents">AI Agents</button>
+            <button type="button" class="category-filter-btn" data-filter="productivity">Productivity &amp; Workflows</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Grid -->
+      <section class="container">
+        <div class="blog-grid" id="articles-container">
+          <!-- Article 1 -->
+          <article class="article-card" data-category="browser-automation">
+            <div>
+              <div class="article-meta-row">
+                <span class="article-category-badge">Browser Automation</span>
+                <span>Nov 25, 2026 · 6 min read</span>
+              </div>
+              <h2 class="article-card-title">What Is Browser Automation and How Does It Work?</h2>
+              <p class="article-card-desc">
+                Learn how browser automation works, where it delivers the highest ROI, and how modern on-device AI is replacing brittle selector scripts.
+              </p>
+            </div>
+            <div>
+              <a href="./what-is-browser-automation/" class="read-more-link">
+                Read Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card" data-category="ai-agents">
+            <div>
+              <div class="article-meta-row">
+                <span class="article-category-badge">AI Agents</span>
+                <span>Nov 25, 2026 · 8 min read</span>
+              </div>
+              <h2 class="article-card-title">How AI Agents Work: A Practical Architecture Guide</h2>
+              <p class="article-card-desc">
+                Understand the internal architecture of autonomous AI agents: perception loops, cognitive planning, deterministic tooling, and external webhook integrations.
+              </p>
+            </div>
+            <div>
+              <a href="./how-ai-agents-work/" class="read-more-link">
+                Read Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="article-card" data-category="productivity">
+            <div>
+              <div class="article-meta-row">
+                <span class="article-category-badge">Productivity</span>
+                <span>Nov 25, 2026 · 5 min read</span>
+              </div>
+              <h2 class="article-card-title">Automating Repetitive Browser Tasks: From Busywork to Flow</h2>
+              <p class="article-card-desc">
+                A 3-step practical framework to identify high-friction manual browser routines and eliminate hours of wasted mechanical clicking each week.
+              </p>
+            </div>
+            <div>
+              <a href="./automating-repetitive-browser-tasks/" class="read-more-link">
+                Read Article
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Custom Solutions CTA Banner -->
+        <div style="background:var(--bg-surface); border:1px solid var(--border-glow); border-radius:var(--radius-lg); padding:var(--space-2xl); text-align:center; margin-bottom:var(--space-3xl); box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+          <span class="modal-eyebrow" style="color:var(--accent);">Tailored Studio Solutions</span>
+          <h3 style="font-size:1.6rem; margin:8px 0 12px; color:var(--text-main);">Need something beyond Alfie?</h3>
+          <p style="color:var(--text-secondary); max-width:620px; margin:0 auto var(--space-lg); font-size:1rem;">
+            We build custom AI agents, integrations, and automation systems designed specifically around your proprietary workflows and business requirements.
+          </p>
+          <a href="../contact/" class="btn btn-primary">Explore Custom Solutions &rarr;</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <p>&copy; 2026 LawGlitch. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../">Home</a>
+          <a href="../products/">Products</a>
+          <a href="./">Blog</a>
+          <a href="../terms/">Terms &amp; Privacy</a>
+          <a href="../custom-integrations/">Custom Integrations</a>
+          <a href="../contact/">Contact</a>
+          <a href="../dashboard/">Dashboard</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Shared Installation Modal Controller -->
+  <script src="../assets/js/instruction-anim.js"></script>
+  <script src="../assets/js/install-modal.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // Simple category filtering
+    document.querySelectorAll('.category-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.article-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
