@@ -1,5 +1,3 @@
 # Cloudflare Pages Redirects
 /legal/*          /terms/                 301
 /legal            /terms/                 301
-/dashboard/*      /custom-integrations/   301
-/dashboard        /custom-integrations/   301
